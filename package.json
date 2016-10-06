@@ -1,7 +1,7 @@
 {
-  "name": "slate-menu",
+  "name": "slate-toolbar",
   "version": "0.0.0",
-  "description": "slate menu for plugins.",
+  "description": "slate toolbar for plugins.",
   "homepage": "",
   "author": {
     "name": "chilijung",
@@ -14,7 +14,7 @@
   "main": "lib/index.js",
   "keywords": [
     "slate",
-    "menu",
+    "toolbar",
     "plugins"
   ],
   "devDependencies": {
@@ -77,7 +77,7 @@
     "lint",
     "test"
   ],
-  "repository": "Canner/slate-menu",
+  "repository": "Canner/slate-toolbar",
   "peerDependencies": {
     "react": "^15.3.1",
     "react-dom": "^15.3.1"
@@ -89,6 +89,7 @@
     "react-portal": "^2.2.1",
     "slate-edit-blockquote": "^0.1.2",
     "slate-edit-list": "^0.4.2",
-    "slate-edit-table": "^0.6.0"
+    "slate-edit-table": "^0.6.0",
+    "slate-plugins": "^0.1.0"
   }
 }
