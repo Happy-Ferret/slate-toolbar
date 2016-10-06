@@ -36,11 +36,19 @@ module.exports = {
       {
         test: /\.js$/,
         loaders: ['babel'],
-        exclude: path.resolve(__dirname, "node_modules")
+        exclude: [/node_modules/]
+      },
+      {
+        test: /\.less$/,
+        loader: "style!css!less"
+      },
+      {
+        test: /\.css$/,
+        loader: "style!css"
       },
       {
         test: /\.json$/,
-        include: /node_modules/,
+        include: [/node_modules/, 'slate-plugins'],
         loader: 'json-loader'
       }
     ]

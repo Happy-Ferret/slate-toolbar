@@ -1,11 +1,11 @@
 import React, {Component, PropTypes} from 'react';
 import DEFAULT from './default';
-import {preventDefault} from '../utils/default';
 import Dropdown from 'rc-dropdown';
 import Menu, {Item as MenuItem} from 'rc-menu';
 import {blocks, utils} from 'slate-plugins';
-const heading = blocks.heading;
-const hasBlocks = utils.has.hasBlocks;
+const {heading} = blocks;
+const {hasBlocks} = utils.has;
+const {preventDefault} = utils.defaultFunc;
 
 export default class Header extends Component {
   constructor(props) {

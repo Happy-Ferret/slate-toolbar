@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import Portal from 'react-portal';
-import {getVisibleSelectionRect} from './utils/range';
+import {utils} from 'slate-plugins';
+const {getVisibleSelectionRect} = utils.range;
 
 import './dropdown.less';
 import './style.less';
