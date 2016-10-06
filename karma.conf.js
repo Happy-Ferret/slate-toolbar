@@ -12,7 +12,7 @@ module.exports = function(config) {
     preprocessors: {
       'tests.webpack.js': ['webpack', 'sourcemap']
     },
-        reporters: ['dots'],
+    reporters: ['dots'],
     webpack: {
       externals: {
         'react/lib/ReactContext': 'window',
@@ -33,7 +33,7 @@ module.exports = function(config) {
       },
       resolve: {
         alias: {
-          slateMenu: path.join(__dirname, './src/') 
+          slateToolbar: path.join(__dirname, './src/')
         }
       }
     },
@@ -41,5 +41,4 @@ module.exports = function(config) {
       noInfo: true
     }
   });
-
-  };
+};
