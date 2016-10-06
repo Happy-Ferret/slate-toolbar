@@ -1,2 +1,3 @@
 import toolbar from './toolbar';
-export default toolbar;
+import items from './items';
+export default {toolbar, items};
