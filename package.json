@@ -54,6 +54,7 @@
     "react-dom": "^15.3.1",
     "rimraf": "^2.5.4",
     "slate": "^0.14.15",
+    "slate-editor-icons": "0.0.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.2",
     "webpack-hot-middleware": "^2.12.2"

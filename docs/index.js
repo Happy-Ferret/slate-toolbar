@@ -2,7 +2,7 @@ import React, {PropTypes} from 'react';
 import ReactDOM from 'react-dom';
 import {Editor, Raw} from 'slate';
 import toolbar from '../src';
-import toolbarItems from '../src/items';
+import Icons from 'slate-editor-icons';
 
 const initialState = Raw.deserialize({
   nodes: [
@@ -21,18 +21,18 @@ const initialState = Raw.deserialize({
 
 const options = {
   toolbarMarks: [
-    toolbarItems.Bold,
-    toolbarItems.Italic,
-    toolbarItems.Underline,
-    toolbarItems.Code,
-    toolbarItems.StrikeThrough
+    Icons.marks.Bold,
+    Icons.marks.Italic,
+    Icons.marks.Underline,
+    Icons.marks.Code,
+    Icons.marks.StrikeThrough
   ],
   toolbarBlocks: [
-    toolbarItems.Link,
-    toolbarItems.Heading,
-    toolbarItems.Blockquote,
-    toolbarItems.OlList,
-    toolbarItems.UlList
+    Icons.blocks.Link,
+    Icons.blocks.Heading,
+    Icons.blocks.Blockquote,
+    Icons.blocks.OlList,
+    Icons.blocks.UlList
   ]
 };
 

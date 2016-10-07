@@ -3,7 +3,6 @@ import Portal from 'react-portal';
 import {utils} from 'slate-plugins';
 const {getVisibleSelectionRect} = utils.range;
 
-import './dropdown.less';
 import './style.less';
 
 export default (options = {}) => {
