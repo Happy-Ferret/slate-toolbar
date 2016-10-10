@@ -2,7 +2,6 @@ import React, {Component, PropTypes} from 'react';
 import Portal from 'react-portal';
 import {utils} from 'slate-plugins';
 const {getVisibleSelectionRect} = utils.range;
-
 import './style.css';
 
 export default (options = {}) => {
@@ -65,12 +64,29 @@ export default (options = {}) => {
 
     renderBlockButton(Type) {
       const {state, onChange} = this.props;
-      return React.createElement(Type, {state, onChange, key: ++i});
+      return React.createElement(Type, {
+        state,
+        onChange,
+        key: ++i,
+        className: 'slate-toolbar-item',
+        activeClassName: 'slate-toolbar-item active-item'
+      });
     }
 
     renderMarkButton(Type) {
       const {state, onChange} = this.props;
-      return React.createElement(Type, {state, onChange, key: ++i});
+
+      if (Type === 'devider') {
+        return <div className="devider"/>;
+      }
+
+      return React.createElement(Type, {
+        state,
+        onChange,
+        key: ++i,
+        className: 'slate-toolbar-item',
+        activeClassName: 'slate-toolbar-item active-item'
+      });
     }
 
     onOpen({firstChild: menu}) {
@@ -86,11 +102,20 @@ export default (options = {}) => {
         <Portal
           // isOpened={value.isBlurred === false && value.isExpanded === true}
           isOpened
-          onOpen={this.onOpen}
-          key="toolbar-0">
+          onOpen={this.onOpen}>
           <div className="slate-toolbar">
-            {theToolbarMarks.map(this.renderMarkButton)} |
-            {theToolbarBlocks.map(this.renderBlockButton)}
+            {
+              theToolbarMarks.length > 0 ?
+                <div className="slate-toolbar-section">
+                  {theToolbarMarks.map(this.renderMarkButton)}
+                </div> : null
+            }
+            {
+              theToolbarBlocks.length > 0 ?
+                <div className="slate-toolbar-section">
+                  {theToolbarBlocks.map(this.renderBlockButton)}
+                </div> : null
+            }
           </div>
         </Portal>
       );
