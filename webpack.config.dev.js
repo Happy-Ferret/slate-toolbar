@@ -32,16 +32,12 @@ module.exports = {
         exclude: [/node_modules/]
       },
       {
-        test: /\.less$/,
-        loader: "style!css!less"
-      },
-      {
         test: /\.css$/,
         loader: "style!css"
       },
       {
         test: /\.json$/,
-        include: [/node_modules/, 'slate-plugins'],
+        include: [/node_modules/],
         loader: 'json-loader'
       }
     ]

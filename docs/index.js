@@ -28,7 +28,7 @@ const options = {
     Icons.marks.StrikeThrough
   ],
   toolbarBlocks: [
-    Icons.blocks.Link,
+    Icons.inlines.Link,
     Icons.blocks.Heading,
     Icons.blocks.Blockquote,
     Icons.blocks.OlList,
@@ -64,10 +64,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <EditorContainer
-        state={this.state.state}
-        onChange={state => this.setState({state})}
-      />
+      <div className="container">
+        <EditorContainer
+          state={this.state.state}
+          onChange={state => this.setState({state})}
+        />
+      </div>
     );
   }
 }

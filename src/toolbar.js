@@ -3,7 +3,7 @@ import Portal from 'react-portal';
 import {utils} from 'slate-plugins';
 const {getVisibleSelectionRect} = utils.range;
 
-import './style.less';
+import './style.css';
 
 export default (options = {}) => {
   let {defaultNode, toolbarBlocks, toolbarMarks} = options;
