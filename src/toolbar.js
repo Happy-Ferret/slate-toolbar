@@ -94,14 +94,13 @@ export default (options = {}) => {
     }
 
     renderMenu() {
-      // const {value} = this.props;
+      const {state} = this.props;
       const theToolbarMarks = [...toolbarMarks, ...this.props.toolbarMarks];
       const theToolbarBlocks = [...toolbarBlocks, ...this.props.toolbarBlocks];
 
       return (
         <Portal
-          // isOpened={value.isBlurred === false && value.isExpanded === true}
-          isOpened
+          isOpened={state.isBlurred === false && state.isExpanded === true}
           onOpen={this.onOpen}>
           <div className="slate-toolbar">
             {
