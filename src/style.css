@@ -23,16 +23,17 @@
 .slate-toolbar .slate-toolbar-item {
   cursor: pointer;
   display: inline-block;
-  padding: 6px 10px;
+  padding: 3px;
   font-size: 14px;
 }
-.slate-toolbar .slate-toolbar-item.separated {
-  border-left: 1px solid rgba(255, 255, 255, 0.25);
+
+.slate-toolbar-item, .slate-toolbar-item-active {
+  width: 30px;
+  height: 30px;
 }
 
-[data-active=true],
-.slate-toolbar .slate-toolbar-item:hover {
-  color: limegreen;
+.slate-toolbar .slate-toolbar-item.separated {
+  border-left: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 [data-block-active=true] {
@@ -43,8 +44,71 @@
   display: inline-block;
 }
 
-.devider {
-  display: inline;
-  height: inherit;
-  border-right: 1px solid #FFF;
+.slate-toolbar-block-section, .slate-toolbar-mark-section {
+  display: block;
+}
+
+.ql-stroke {
+  stroke: #FFF;
+  fill: transparent;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1px;
+}
+
+.ql-stroke-active {
+  stroke: #f97d5a;
+  fill: transparent;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.5px;
+}
+
+.ql-stroke-mitter {
+  stroke: #FFF;
+  fill: transparent;
+}
+
+.ql-stroke-mitter-active {
+  stroke: #f97d5a;
+  fill: transparent;
+}
+
+.ql-fill {
+  fill: #FFF;
+}
+
+.ql-fill-active {
+  fill: #f97d5a;
+}
+
+.ql-even {
+  stroke: #FFF;
+  fill: #151515;
+}
+
+.ql-even-active {
+  stroke: #f97d5a;
+  fill: #151515;
+}
+
+.ql-color-label {
+  fill: #000;
+  opacity: 0.2;
+}
+
+.ql-transparent {
+  // opacity: 0.2;
+}
+
+.ql-thin {
+  stroke: #FFF;
+  fill: transparent;
+  stroke-width: 1;
+}
+
+.ql-thin-active {
+  stroke: #f97d5a;
+  fill: transparent;
+  stroke-width: 1;
 }

@@ -69,7 +69,11 @@ export default (options = {}) => {
         onChange,
         key: ++i,
         className: 'slate-toolbar-item',
-        activeClassName: 'slate-toolbar-item active-item'
+        activeClassName: 'slate-toolbar-item active-item',
+        activeStrokeClassName: "ql-stroke-active",
+        activeFillClassName: "ql-fill-active",
+        activeThinClassName: "ql-thin-active",
+        activeEvenClassName: "ql-even-active"
       });
     }
 
@@ -79,13 +83,16 @@ export default (options = {}) => {
       if (Type === 'devider') {
         return <div className="devider"/>;
       }
-
       return React.createElement(Type, {
         state,
         onChange,
         key: ++i,
         className: 'slate-toolbar-item',
-        activeClassName: 'slate-toolbar-item active-item'
+        activeClassName: 'slate-toolbar-item active-item',
+        activeStrokeClassName: "ql-stroke-active",
+        activeFillClassName: "ql-fill-active",
+        activeThinClassName: "ql-thin-active",
+        activeEvenClassName: "ql-even-active"
       });
     }
 
@@ -97,24 +104,27 @@ export default (options = {}) => {
       const {state} = this.props;
       const theToolbarMarks = [...toolbarMarks, ...this.props.toolbarMarks];
       const theToolbarBlocks = [...toolbarBlocks, ...this.props.toolbarBlocks];
-
       return (
         <Portal
-          isOpened={state.isBlurred === false && state.isExpanded === true}
+          isOpened={state.isExpanded === true && state.isBlurred !== true}
           onOpen={this.onOpen}>
           <div className="slate-toolbar">
-            {
-              theToolbarMarks.length > 0 ?
-                <div className="slate-toolbar-section">
-                  {theToolbarMarks.map(this.renderMarkButton)}
-                </div> : null
-            }
-            {
-              theToolbarBlocks.length > 0 ?
-                <div className="slate-toolbar-section">
-                  {theToolbarBlocks.map(this.renderBlockButton)}
-                </div> : null
-            }
+            <div className="slate-toolbar-mark-section">
+              {
+                theToolbarMarks.length > 0 ?
+                  <div className="slate-toolbar-section">
+                    {theToolbarMarks.map(this.renderMarkButton)}
+                  </div> : null
+              }
+            </div>
+            <div className="slate-toolbar-block-section">
+              {
+                theToolbarBlocks.length > 0 ?
+                  <div className="slate-toolbar-section">
+                    {theToolbarBlocks.map(this.renderBlockButton)}
+                  </div> : null
+              }
+            </div>
           </div>
         </Portal>
       );
