@@ -1,6 +1,6 @@
 .slate-toolbar {
   position: absolute;
-  z-index: 4;
+  z-index: 10000;
   margin-top: -6px;
   color: #fff;
   cursor: auto;
