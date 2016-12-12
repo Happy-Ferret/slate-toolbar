@@ -9,6 +9,7 @@ import EditBlockquote from 'slate-edit-blockquote';
 import {Emoji} from 'emoji-mart';
 
 import "./style.css";
+import "./github-markdown.css";
 
 const initialState = Raw.deserialize({
   nodes: [
@@ -173,7 +174,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="container">
+      <div className="container markdown-body">
         <EditorContainer
           state={this.state.state}
           onChange={state => this.setState({state})}

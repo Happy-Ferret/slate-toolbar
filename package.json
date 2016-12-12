@@ -1,6 +1,6 @@
 {
   "name": "slate-toolbar",
-  "version": "0.5.4",
+  "version": "0.6.0",
   "description": "slate toolbar for plugins.",
   "homepage": "",
   "author": {
@@ -37,6 +37,7 @@
     "eslint-config-google": "^0.4.0",
     "eslint-plugin-react": "^6.2.0",
     "express": "^4.14.0",
+    "gulp": "^3.9.1",
     "hex-rgb": "^1.0.0",
     "json-loader": "^0.5.4",
     "karma": "^1.2.0",
@@ -46,14 +47,17 @@
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "^1.8.0",
     "mocha": "^2.4.5",
+    "node-sass": "^4.0.0",
     "precommit-hook-eslint": "^3.0.0",
     "react": "^15.3.1",
     "react-addons-test-utils": "^15.3.1",
     "react-dom": "^15.3.1",
+    "resolve-url-loader": "^1.6.1",
     "rimraf": "^2.5.4",
-    "slate": "^0.15.9",
+    "sass-loader": "^4.0.2",
+    "slate": "^0.16.4",
     "slate-edit-blockquote": "^0.1.2",
-    "slate-edit-list": "^0.5.1",
+    "slate-edit-list": "^0.5.5",
     "slate-edit-table": "^0.8.3",
     "slate-editor-icons": "^0.1.1",
     "style-loader": "^0.13.1",
@@ -64,7 +68,7 @@
     "lint": "eslint src test docs",
     "clean": "rimraf lib dist",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib",
-    "build": "npm run build:commonjs && cp ./src/style.css ./lib",
+    "build": "npm run build:commonjs && gulp",
     "prepublish": "npm run clean && npm run check:src && npm run build",
     "check:src": "npm run lint",
     "test": "cross-env BABEL_ENV=test karma start --single-run",
@@ -86,7 +90,7 @@
   "license": "MIT",
   "dependencies": {
     "react-portal": "^3.0.0",
-    "slate-editor-icons": "^0.6.1",
+    "slate-editor-icons": "^0.8.0",
     "slate-plugins": "^1.6.0"
   }
 }

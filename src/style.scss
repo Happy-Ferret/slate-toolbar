@@ -1,4 +1,4 @@
-.slate-toolbar {
+.slateToolbar {
   position: absolute;
   z-index: 1000;
   margin-top: -6px;
@@ -7,7 +7,7 @@
   border-radius: 5px;
   background-image: linear-gradient(180deg, #464646, #151515);
 }
-.slate-toolbar:after {
+.slateToolbar:after {
   top: 100%;
   left: 50%;
   border: solid transparent;
@@ -20,19 +20,19 @@
   border-width: 5px;
   margin-left: -5px;
 }
-.slate-toolbar .slate-toolbar-item {
+.slateToolbar .slateToolbarItem {
   cursor: pointer;
   display: inline-block;
   padding: 3px;
   font-size: 14px;
 }
 
-.slate-toolbar-item, .slate-toolbar-item-active {
+.slateToolbarItem, .slateToolbarItemActive {
   width: 30px;
   height: 30px;
 }
 
-.slate-toolbar .slate-toolbar-item.separated {
+.slateToolbar .slateToolbarItem.separated {
   border-left: 1px solid rgba(255, 255, 255, 0.25);
 }
 
@@ -40,15 +40,15 @@
   outline: 3px solid black;
 }
 
-.slate-toolbar-section {
+.slateToolbarSection {
   display: inline-block;
 }
 
-.slate-toolbar-block-section, .slate-toolbar-mark-section {
+.slateToolbarBlockSection, .slateToolbarMarkSection {
   display: block;
 }
 
-.ql-stroke {
+.qlStroke {
   stroke: #FFF;
   fill: transparent;
   stroke-linecap: round;
@@ -56,7 +56,7 @@
   stroke-width: 1px;
 }
 
-.ql-stroke-active {
+.qlStrokeActive {
   stroke: #f97d5a;
   fill: transparent;
   stroke-linecap: round;
@@ -64,50 +64,50 @@
   stroke-width: 1.5px;
 }
 
-.ql-stroke-mitter {
+.qlStrokeMitter {
   stroke: #FFF;
   fill: transparent;
 }
 
-.ql-stroke-mitter-active {
+.qlStrokeMitterActive {
   stroke: #f97d5a;
   fill: transparent;
 }
 
-.ql-fill {
+.qlFill {
   fill: #FFF;
 }
 
-.ql-fill-active {
+.qlFillActive {
   fill: #f97d5a;
 }
 
-.ql-even {
+.qlEven {
   stroke: #FFF;
   fill: #151515;
 }
 
-.ql-even-active {
+.qlEvenActive {
   stroke: #f97d5a;
   fill: #151515;
 }
 
-.ql-color-label {
+.qlColorLabel {
   fill: #000;
   opacity: 0.2;
 }
 
-.ql-transparent {
+.qlTransparent {
   // opacity: 0.2;
 }
 
-.ql-thin {
+.qlThin {
   stroke: #FFF;
   fill: transparent;
   stroke-width: 1;
 }
 
-.ql-thin-active {
+.qlThinActive {
   stroke: #f97d5a;
   fill: transparent;
   stroke-width: 1;

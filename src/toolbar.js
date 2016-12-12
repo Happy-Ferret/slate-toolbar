@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 import Portal from 'react-portal';
 import {utils} from 'slate-plugins';
 const {getVisibleSelectionRect} = utils.range;
-import './style.css';
+import styles from './style.scss';
 
 export default (options = {}) => {
   let {defaultNode, toolbarBlocks, toolbarMarks} = options;
@@ -68,12 +68,19 @@ export default (options = {}) => {
         state,
         onChange,
         key: ++i,
-        className: 'slate-toolbar-item',
-        activeClassName: 'slate-toolbar-item active-item',
-        activeStrokeClassName: "ql-stroke-active",
-        activeFillClassName: "ql-fill-active",
-        activeThinClassName: "ql-thin-active",
-        activeEvenClassName: "ql-even-active"
+        className: styles.slateToolbarItem,
+        strokeClassName: styles.qlStroke,
+        strokeMitterClassName: styles.qlStrokeMitter,
+        fillClassName: styles.qlFill,
+        evenClassName: styles.qlEven,
+        colorLabelClassName: styles.qlColorLabel,
+        thinClassName: styles.qlThin,
+        activeStrokeMitterClassName: styles.qlStrokeMitterActive,
+        activeClassName: `${styles.slateToolbarItem} ${styles.activeItem}`,
+        activeStrokeClassName: styles.qlStrokeActive,
+        activeFillClassName: styles.qlFillActive,
+        activeThinClassName: styles.qlThinActive,
+        activeEvenClassName: styles.qlEvenActive
       });
     }
 
@@ -87,12 +94,19 @@ export default (options = {}) => {
         state,
         onChange,
         key: ++i,
-        className: 'slate-toolbar-item',
-        activeClassName: 'slate-toolbar-item active-item',
-        activeStrokeClassName: "ql-stroke-active",
-        activeFillClassName: "ql-fill-active",
-        activeThinClassName: "ql-thin-active",
-        activeEvenClassName: "ql-even-active"
+        className: styles.slateToolbarItem,
+        strokeClassName: styles.qlStroke,
+        strokeMitterClassName: styles.qlStrokeMitter,
+        fillClassName: styles.qlFill,
+        evenClassName: styles.qlEven,
+        colorLabelClassName: styles.qlColorLabel,
+        thinClassName: styles.qlThin,
+        activeStrokeMitterClassName: styles.qlStrokeMitterActive,
+        activeClassName: `${styles.slateToolbarItem} ${styles.activeItem}`,
+        activeStrokeClassName: styles.qlStrokeActive,
+        activeFillClassName: styles.qlFillActive,
+        activeThinClassName: styles.qlThinActive,
+        activeEvenClassName: styles.qlEvenActive
       });
     }
 
@@ -108,19 +122,19 @@ export default (options = {}) => {
         <Portal
           isOpened={state.isExpanded === true && state.isBlurred !== true}
           onOpen={this.onOpen}>
-          <div className="slate-toolbar">
-            <div className="slate-toolbar-mark-section">
+          <div className={styles.slateToolbar}>
+            <div className={styles.slateToolbarMarkSection}>
               {
                 theToolbarMarks.length > 0 ?
-                  <div className="slate-toolbar-section">
+                  <div className={styles.slateToolbarSection}>
                     {theToolbarMarks.map(this.renderMarkButton)}
                   </div> : null
               }
             </div>
-            <div className="slate-toolbar-block-section">
+            <div className={styles.slateToolbarBlockSection}>
               {
                 theToolbarBlocks.length > 0 ?
-                  <div className="slate-toolbar-section">
+                  <div className={styles.slateToolbarSection}>
                     {theToolbarBlocks.map(this.renderBlockButton)}
                   </div> : null
               }
