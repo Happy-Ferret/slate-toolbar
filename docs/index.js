@@ -6,10 +6,18 @@ import toolbar from '../src';
 import Icons from 'slate-editor-icons';
 import EditList from 'slate-edit-list';
 import EditBlockquote from 'slate-edit-blockquote';
-import {Emoji} from 'emoji-mart';
 
 import "./style.css";
 import "./github-markdown.css";
+
+const {
+  commonNode,
+  commonMark,
+  videoNode,
+  imageNode,
+  emojiNode,
+  linkNode
+} = Icons.helpers;
 
 const initialState = Raw.deserialize({
   nodes: [
@@ -66,79 +74,40 @@ const options = {
   ]
 };
 
-const makeTagNode = Tag => {
-  const NodeComponent = ({attributes, children, node}) => {
-    const align = node.data.get('align');
-    return (
-      <Tag {...attributes} style={{textAlign: align}}>{children}</Tag>
-    );
-  };
-
-  NodeComponent.displayName = `${Tag}-node`;
-
-  NodeComponent.propTypes = {
-    attributes: PropTypes.object,
-    children: PropTypes.any,
-    node: PropTypes.any
-  };
-
-  return NodeComponent;
-};
-
 /* eslint-disable react/prop-types, react/display-name */
 const schema = {
   nodes: {
-    'blockquote': makeTagNode('blockquote'),
-    'list-ul': makeTagNode('ul'),
-    'list-ol': makeTagNode('ol'),
-    'list-item': makeTagNode('li'),
-    'heading1': makeTagNode('h1'),
-    'heading2': makeTagNode('h2'),
-    'heading3': makeTagNode('h3'),
-    'heading4': makeTagNode('h4'),
-    'heading5': makeTagNode('h5'),
-    'heading6': makeTagNode('h6'),
-    'paragraph': makeTagNode('p'),
-    'link': props => {
-      return (
-        <a {...props.attributes} href={props.node.data.get('url')}>
-          {props.children}
-        </a>
-      );
-    },
-    'emoji': props => {
-      return (
-        <Emoji emoji={props.node.data.get('code').colons} size={18}/>
-      );
-    },
-    // 'table': props => <table><tbody {...props.attributes}>{props.children}</tbody></table>,
-    'table_row': props => <tr {...props.attributes}>{props.children}</tr>,
-    'table_cell': props => <td {...props.attributes}>{props.children}</td>
+    'blockquote': commonNode('blockquote'),
+    'list-ul': commonNode('ul'),
+    'list-ol': commonNode('ol'),
+    'list-item': commonNode('li'),
+    'heading1': commonNode('h1'),
+    'heading2': commonNode('h2'),
+    'heading3': commonNode('h3'),
+    'heading4': commonNode('h4'),
+    'heading5': commonNode('h5'),
+    'heading6': commonNode('h6'),
+    'paragraph': commonNode('p'),
+    'youtube': videoNode('youtube'),
+    'dailymotion': videoNode('dailymotion'),
+    'vimeo': videoNode('vimeo'),
+    'youku': videoNode('youku'),
+    'image': imageNode(),
+    'link': linkNode(),
+    'emoji': emojiNode()
   },
   marks: {
-    bold: ({children}) => <strong>{children}</strong>,
-    code: ({children}) => <code>{children}</code>,
-    italic: ({children}) => <em>{children}</em>,
-    underline: ({children}) => <u>{children}</u>,
-    fontColor: ({children, mark}) => {
-      const color = mark.get('data').get('rgba');
-      return (
-        <span style={{color}}>
-          {children}
-        </span>
-      );
-    },
-    fontBgColor: ({children, mark}) => {
-      const color = mark.get('data').get('rgba');
-      return (
-        <span style={{backgroundColor: color}}>
-          {children}
-        </span>
-      );
-    },
-    strikethrough: ({children}) => <s>{children}</s>
+    bold: commonMark('strong'),
+    code: commonMark('code'),
+    italic: commonMark('em'),
+    underline: commonMark('u'),
+    fontColor: commonMark('span', 'fontColor'),
+    fontBgColor: commonMark('span', 'fontBgColor'),
+    strikethrough: commonMark('s')
   }
 };
+
+
 /* eslint-enable */
 
 @toolbar(options)
