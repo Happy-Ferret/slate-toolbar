@@ -107,9 +107,7 @@ const schema = {
   }
 };
 
-
 /* eslint-enable */
-
 @toolbar(options)
 class EditorContainer extends React.Component {
   static propTypes = {
