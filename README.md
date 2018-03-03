@@ -1,4 +1,6 @@
 # slate-toolbar [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Canner/slate-toolbar.svg?token=8189dd4ddae1170f9e4effc991e0da5dc2ffbc83dc0f72b432b038672fc3fd9c&ts=1520088290173)](https://greenkeeper.io/)
 > slate toolbar for plugins.
 
 ## Installation
