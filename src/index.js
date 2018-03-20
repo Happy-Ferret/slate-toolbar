@@ -1,10 +1,19 @@
-import React, { Component, PropTypes } from "react";
-import Portal from "react-portal";
+// @flow
+import * as React from "react";
+import type { Value, Change } from "slate";
+import {Portal} from "react-portal";
 import { getVisibleSelectionRect } from "./utils";
-import styles from "./style.scss";
+import Container from './container';
 
-export default (options = {}) => {
-  let { defaultNode, toolbarBlocks, toolbarMarks } = options;
+type Props = {
+  toolbarMarks: Array<React.Element<*> | string>,
+  toolbarBlocks: Array<React.Element<*> | string>,
+  value: Value,
+  onChange: (change: Change) => void
+};
+
+export default (options: { [string]: any } = {}) => {
+  let { defaultNode, toolbarBlocks, toolbarMarks, toolbarElement } = options;
   let i = 0;
 
   if (!defaultNode) {
@@ -17,134 +26,101 @@ export default (options = {}) => {
     toolbarMarks = [];
   }
 
-  return Editor =>
-    class SlateToolbarDecorator extends Component {
-      constructor(props) {
-        super(props);
-        this.renderBlockButton = this.renderBlockButton.bind(this);
-        this.renderMarkButton = this.renderMarkButton.bind(this);
-        this.onOpen = this.onOpen.bind(this);
+  if (!toolbarElement) {
+    toolbarElement = "slate-editor-toolbar"
+  }
 
-        this.state = { menu: null };
+  return (Editor: any) =>
+    class SlateToolbarDecorator extends React.Component<Props> {
+      constructor(props: Props) {
+        super(props);
+
+        if (document && document.getElementById(toolbarElement)) {
+          this.toolbarElement = document && (document: any).getElementById(toolbarElement);
+        } else {
+          throw new Error(`You have to have a element id: "${toolbarElement}" in your html`)
+        }
       }
 
-      static propTypes = {
-        toolbarMarks: PropTypes.array,
-        toolbarBlocks: PropTypes.array,
-        state: PropTypes.object,
-        onChange: PropTypes.func
-      };
+      containerNode: ?HTMLDivElement;
+      toolbarElement: HTMLElement;
 
       static defaultProps = {
         toolbarMarks: [],
-        toolbarBlocks: [],
-        children: []
+        toolbarBlocks: []
       };
 
-      componentDidMount() {
-        const { menu } = this.state;
-        if (!menu) {
-          return;
-        }
-
-        const rect = getVisibleSelectionRect();
-        if (!rect) {
-          return;
-        }
-        const top = rect.top + window.scrollY - menu.offsetHeight;
-        const left =
-          rect.left + window.scrollX - menu.offsetWidth / 2 + rect.width / 2; // eslint-disable-line
-        menu.style.top = `${top}px`;
-        menu.style.left = `${left}px`;
-      }
-
       componentDidUpdate() {
-        this.componentDidMount();
-      }
-
-      renderBlockButton(Type) {
-        const { state, onChange } = this.props;
-        return React.createElement(Type, {
-          state,
-          onChange,
-          key: ++i,
-          className: styles.slateToolbarItem,
-          strokeClassName: styles.qlStroke,
-          strokeMitterClassName: styles.qlStrokeMitter,
-          fillClassName: styles.qlFill,
-          evenClassName: styles.qlEven,
-          colorLabelClassName: styles.qlColorLabel,
-          thinClassName: styles.qlThin,
-          activeStrokeMitterClassName: styles.qlStrokeMitterActive,
-          activeClassName: `${styles.slateToolbarItem} ${styles.activeItem}`,
-          activeStrokeClassName: styles.qlStrokeActive,
-          activeFillClassName: styles.qlFillActive,
-          activeThinClassName: styles.qlThinActive,
-          activeEvenClassName: styles.qlEvenActive
-        });
-      }
-
-      renderMarkButton(Type) {
-        const { state, onChange } = this.props;
-
-        if (Type === "devider") {
-          return <div className="devider" />;
+        const rect = getVisibleSelectionRect();
+        if (!rect || !this.containerNode) {
+          return;
         }
-        return React.createElement(Type, {
-          state,
-          onChange,
-          key: ++i,
-          className: styles.slateToolbarItem,
-          strokeClassName: styles.qlStroke,
-          strokeMitterClassName: styles.qlStrokeMitter,
-          fillClassName: styles.qlFill,
-          evenClassName: styles.qlEven,
-          colorLabelClassName: styles.qlColorLabel,
-          thinClassName: styles.qlThin,
-          activeStrokeMitterClassName: styles.qlStrokeMitterActive,
-          activeClassName: `${styles.slateToolbarItem} ${styles.activeItem}`,
-          activeStrokeClassName: styles.qlStrokeActive,
-          activeFillClassName: styles.qlFillActive,
-          activeThinClassName: styles.qlThinActive,
-          activeEvenClassName: styles.qlEvenActive
-        });
+
+        const top = rect.top + window.scrollY - this.containerNode.offsetHeight;
+        const left = rect.left + window.scrollX - this.containerNode.offsetWidth / 2 + rect.width / 2; // eslint-disable-line
+        this.containerNode.style.top = `${top}px`;
+        this.containerNode.style.left = `${left}px`;
       }
 
-      onOpen({ firstChild: menu }) {
-        this.setState({ menu });
-      }
+      renderButton = (Type: any) => {
+        const { value, onChange } = this.props;
 
-      renderMenu() {
-        const { state } = this.props;
-        const theToolbarMarks = [...toolbarMarks, ...this.props.toolbarMarks];
-        const theToolbarBlocks = [
+        if (Type === "divider") {
+          return <div className="divider" />;
+        }
+
+        return <Type 
+          change={value.change()}
+          onChange={onChange}
+          key={i++}
+          className="slateToolbarItem"
+          strokeClassName="qlStroke"
+          strokeMitterClassName="qlStrokeMitter"
+          fillClassName="qlFill"
+          evenClassName="qlEven"
+          colorLabelClassName="qlColorLabel"
+          thinClassName="qlThin"
+          activeStrokeMitterClassName="qlStrokeMitterActive"
+          activeClassName="slateToolbarItem activeItem"
+          activeStrokeClassName="qlStrokeActive"
+          activeFillClassName="qlFillActive"
+          activeThinClassName="qlThinActive"
+          activeEvenClassName="qlEvenActive"
+        />;
+      };
+
+      renderMenu = () => {
+        const { value } = this.props;
+        const toolbarMarksList = [...toolbarMarks, ...this.props.toolbarMarks];
+
+        const toolbarBlocksList = [
           ...toolbarBlocks,
           ...this.props.toolbarBlocks
         ];
-        return (
-          <Portal
-            isOpened={state.isExpanded === true && state.isBlurred !== true}
-            onOpen={this.onOpen}
-          >
-            <div className={styles.slateToolbar}>
-              <div className={styles.slateToolbarMarkSection}>
-                {theToolbarMarks.length > 0 ? (
-                  <div className={styles.slateToolbarSection}>
-                    {theToolbarMarks.map(this.renderMarkButton)}
-                  </div>
-                ) : null}
+
+        return value.isExpanded && value.isFocused && (
+          <Portal node={this.toolbarElement}>
+            <Container>
+              <div className="slateToolbar" ref={node => this.containerNode = node}>
+                <div className="slateToolbarMarkSection">
+                  {toolbarMarksList.length && (
+                    <div className="slateToolbarSection">
+                      {toolbarMarksList.map(this.renderButton)}
+                    </div>
+                  )}
+                </div>
+                <div className="slateToolbarBlockSection">
+                  {toolbarBlocksList.length && (
+                    <div className="slateToolbarSection">
+                      {toolbarBlocksList.map(this.renderButton)}
+                    </div>
+                  )}
+                </div>
               </div>
-              <div className={styles.slateToolbarBlockSection}>
-                {theToolbarBlocks.length > 0 ? (
-                  <div className={styles.slateToolbarSection}>
-                    {theToolbarBlocks.map(this.renderBlockButton)}
-                  </div>
-                ) : null}
-              </div>
-            </div>
+            </Container>
           </Portal>
         );
-      }
+      };
       render() {
         return (
           <div>

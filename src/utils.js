@@ -67,7 +67,7 @@ const getRangeBoundingClientRect = range => {
   };
 };
 
-const getVisibleSelectionRect = () => {
+export const getVisibleSelectionRect = () => {
   if (typeof window === "undefined") {
     return null;
   }
@@ -87,7 +87,7 @@ const getVisibleSelectionRect = () => {
   return boundingRect;
 };
 
-const getCollapsedClientRect = () => {
+export const getCollapsedClientRect = () => {
   const selection = document.getSelection();
   if (
     selection.rangeCount === 0 ||
@@ -102,13 +102,4 @@ const getCollapsedClientRect = () => {
   const node = selection.getRangeAt(0).startContainer;
   const rect = node.getBoundingClientRect();
   return rect;
-};
-
-export default {
-  getRangeClientRectsChrome,
-  isChrome,
-  getRangeClientRects,
-  getRangeBoundingClientRect,
-  getVisibleSelectionRect,
-  getCollapsedClientRect
 };

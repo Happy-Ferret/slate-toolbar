@@ -1,5 +1,5 @@
 # slate-toolbar [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> slate toolbar for plugins.
+> Quick and easy way to implement medium like toolbar in you slate editor
 
 ## Installation
 
@@ -9,12 +9,14 @@ $ npm install --save slate-toolbar
 
 ## Usage
 
+TODO
+
 see `./docs/index.js` for usage and demo
 
 ## Start example server
 
 ```
-node devServer.js
+npm start
 ```
 
 ## Maintainer
