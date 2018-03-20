@@ -64,7 +64,7 @@ export default (options: { [string]: any } = {}) => {
           rect.left +
           window.scrollX -
           this.containerNode.offsetWidth / 2 +
-          rect.width / 2; // eslint-disable-line
+          rect.width / 2;
         this.containerNode.style.top = `${top}px`;
         this.containerNode.style.left = `${left}px`;
       }
