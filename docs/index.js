@@ -9,9 +9,6 @@ import Blockquote from '@canner/slate-icon-blockquote';
 import Bold from '@canner/slate-icon-bold';
 import Clean from '@canner/slate-icon-clean';
 import Code from '@canner/slate-icon-code';
-import Emoji from '@canner/slate-icon-emoji';
-import FontBgColor from '@canner/slate-icon-fontbgcolor';
-import FontColor from '@canner/slate-icon-fontcolor';
 import {Header1, Header2} from '@canner/slate-icon-header';
 import Italic from '@canner/slate-icon-italic';
 import Link from '@canner/slate-icon-link';
@@ -32,7 +29,6 @@ import "./github-markdown.css";
 const {
   commonNode,
   commonMark,
-  emojiNode,
   linkNode
 } = renderNodesFn;
 
@@ -66,13 +62,10 @@ const options = {
     Code,
     StrikeThrough,
     Clean,
-    FontColor,
-    FontBgColor,
     "divider"
   ],
   toolbarBlocks: [
     Link,
-    Emoji,
     Header1,
     Header2,
     Blockquote,
@@ -138,10 +131,6 @@ function renderMark(props) {
       return commonMark('strong')(props);
     case 'code':
       return commonMark('code')(props);
-    case 'fontBgColor':
-      return commonMark('span', 'fontBgColor')(props);
-    case 'fontColor':
-      return commonMark('span', 'fontColor')(props);
     case 'italic':
       return commonMark('i')(props);
     case 'strikethrough':
@@ -157,8 +146,6 @@ function renderNode(props) {
       return commonNode('p')(props);
     case 'blockquote':
       return commonNode('blockquote')(props);
-    case 'emoji':
-      return emojiNode()(props);
     case 'heading1':
       return commonNode('h1')(props);
     case 'heading2':
