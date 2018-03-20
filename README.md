@@ -1,7 +1,7 @@
 # slate-toolbar [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > Quick and easy way to implement medium like toolbar in you slate editor
 
-[!demo](./docs/demo.gif)
+![demo](./docs/demo.gif)
 
 ## Installation
 
