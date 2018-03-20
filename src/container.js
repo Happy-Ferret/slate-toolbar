@@ -1,5 +1,5 @@
 // @flow
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export default styled.div`
   .slateToolbar {
@@ -31,7 +31,8 @@ export default styled.div`
     font-size: 14px;
   }
 
-  .slateToolbarItem, .slateToolbarItemActive {
+  .slateToolbarItem,
+  .slateToolbarItemActive {
     width: 30px;
     height: 30px;
   }
@@ -40,7 +41,7 @@ export default styled.div`
     border-left: 1px solid rgba(255, 255, 255, 0.25);
   }
 
-  [data-block-active=true] {
+  [data-block-active="true"] {
     outline: 3px solid black;
   }
 
@@ -48,12 +49,13 @@ export default styled.div`
     display: inline-block;
   }
 
-  .slateToolbarBlockSection, .slateToolbarMarkSection {
+  .slateToolbarBlockSection,
+  .slateToolbarMarkSection {
     display: block;
   }
 
   .qlStroke {
-    stroke: #FFF;
+    stroke: #fff;
     fill: transparent;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -69,7 +71,7 @@ export default styled.div`
   }
 
   .qlStrokeMitter {
-    stroke: #FFF;
+    stroke: #fff;
     fill: transparent;
   }
 
@@ -79,7 +81,7 @@ export default styled.div`
   }
 
   .qlFill {
-    fill: #FFF;
+    fill: #fff;
   }
 
   .qlFillActive {
@@ -87,7 +89,7 @@ export default styled.div`
   }
 
   .qlEven {
-    stroke: #FFF;
+    stroke: #fff;
     fill: #151515;
   }
 
@@ -106,7 +108,7 @@ export default styled.div`
   }
 
   .qlThin {
-    stroke: #FFF;
+    stroke: #fff;
     fill: transparent;
     stroke-width: 1;
   }
