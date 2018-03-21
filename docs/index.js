@@ -5,14 +5,14 @@ import {Editor} from 'slate-react';
 import {Value, Change} from 'slate';
 import renderNodesFn from '@canner/slate-icon-rendernodes';
 import {AlignCenter, AlignLeft, AlignRight} from '@canner/slate-icon-align';
-import Blockquote from '@canner/slate-icon-blockquote';
+// import Blockquote from '@canner/slate-icon-blockquote';
 import Bold from '@canner/slate-icon-bold';
 import Clean from '@canner/slate-icon-clean';
 import Code from '@canner/slate-icon-code';
-import {Header1, Header2} from '@canner/slate-icon-header';
+// import {Header1, Header2} from '@canner/slate-icon-header';
 import Italic from '@canner/slate-icon-italic';
-import Link from '@canner/slate-icon-link';
-import {OlList, UlList} from '@canner/slate-icon-list';
+// import Link from '@canner/slate-icon-link';
+// import {OlList, UlList} from '@canner/slate-icon-list';
 import StrikeThrough from '@canner/slate-icon-strikethrough';
 import Underline from '@canner/slate-icon-underline';
 import Undo from '@canner/slate-icon-undo';
@@ -65,15 +65,15 @@ const options = {
     "divider"
   ],
   toolbarBlocks: [
-    Link,
-    Header1,
-    Header2,
-    Blockquote,
+    // Link,
+    // Header1,
+    // Header2,
+    // Blockquote,
     AlignCenter,
     AlignLeft,
     AlignRight,
-    OlList,
-    UlList
+    // OlList,
+    // UlList
   ]
 };
 
