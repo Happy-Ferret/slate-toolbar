@@ -4,9 +4,9 @@ import styled from "styled-components";
 export default styled.div`
   .slateToolbar {
     position: absolute;
-    z-index: 1000;
+    z-index: 100000;
     margin-top: -6px;
-    color: #fff;
+    color: #bbb;
     cursor: auto;
     border-radius: 5px;
     background-image: linear-gradient(180deg, #464646, #151515);
@@ -27,35 +27,31 @@ export default styled.div`
   .slateToolbar .slateToolbarItem {
     cursor: pointer;
     display: inline-block;
-    padding: 3px;
-    font-size: 14px;
+    padding: 3px 5px;
   }
 
   .slateToolbarItem,
   .slateToolbarItemActive {
-    width: 30px;
     height: 30px;
+    width: 30px;
   }
 
-  .slateToolbar .slateToolbarItem.separated {
-    border-left: 1px solid rgba(255, 255, 255, 0.25);
-  }
-
-  [data-block-active="true"] {
-    outline: 3px solid black;
-  }
-
-  .slateToolbarSection {
-    display: inline-block;
-  }
-
-  .slateToolbarBlockSection,
-  .slateToolbarMarkSection {
+  .slateToolbarItems {
     display: block;
+
+    .item,
+    .divider {
+      display: inline-block;
+    }
+  }
+
+  .divider {
+    height: 30px;
+    width: 10px;
   }
 
   .qlStroke {
-    stroke: #fff;
+    stroke: #bbb;
     fill: transparent;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -63,7 +59,7 @@ export default styled.div`
   }
 
   .qlStrokeActive {
-    stroke: #f97d5a;
+    stroke: #fff;
     fill: transparent;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -71,35 +67,35 @@ export default styled.div`
   }
 
   .qlStrokeMitter {
-    stroke: #fff;
+    stroke: #bbb;
     fill: transparent;
   }
 
   .qlStrokeMitterActive {
-    stroke: #f97d5a;
+    stroke: #fff;
     fill: transparent;
   }
 
   .qlFill {
-    fill: #fff;
+    fill: #bbb;
   }
 
   .qlFillActive {
-    fill: #f97d5a;
+    fill: #fff;
   }
 
   .qlEven {
-    stroke: #fff;
-    fill: #151515;
+    stroke: #bbb;
+    fill: #464646;
   }
 
   .qlEvenActive {
-    stroke: #f97d5a;
-    fill: #151515;
+    stroke: #fff;
+    fill: #464646;
   }
 
   .qlColorLabel {
-    fill: #000;
+    fill: #464646;
     opacity: 0.2;
   }
 
@@ -108,13 +104,13 @@ export default styled.div`
   }
 
   .qlThin {
-    stroke: #fff;
+    stroke: #bbb;
     fill: transparent;
     stroke-width: 1;
   }
 
   .qlThinActive {
-    stroke: #f97d5a;
+    stroke: #fff;
     fill: transparent;
     stroke-width: 1;
   }

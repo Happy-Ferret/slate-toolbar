@@ -24,7 +24,7 @@ import EditList from 'slate-edit-list';
 import EditBlockquote from 'slate-edit-blockquote';
 
 import "./style.css";
-import "./github-markdown.css";
+import "github-markdown-css";
 
 const {
   commonNode,

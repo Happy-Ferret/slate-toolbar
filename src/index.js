@@ -2,6 +2,7 @@
 import * as React from "react";
 import type { Value, Change } from "slate";
 import { Portal } from "react-portal";
+import WindowDimensions from 'react-window-detect-dimensions';
 import { getVisibleSelectionRect } from "./utils";
 import Container from "./container";
 
@@ -30,8 +31,8 @@ export default (options: { [string]: any } = {}) => {
     toolbarElement = "slate-editor-toolbar";
   }
 
-  return (Editor: any) =>
-    class SlateToolbarDecorator extends React.Component<Props> {
+  return (Editor: any) => {
+    class Toolbar extends React.Component<Props> {
       constructor(props: Props) {
         super(props);
 
@@ -45,6 +46,7 @@ export default (options: { [string]: any } = {}) => {
         }
       }
 
+      toolbarContainerNode: ?HTMLDivElement;
       containerNode: ?HTMLDivElement;
       toolbarElement: HTMLElement;
 
@@ -53,27 +55,36 @@ export default (options: { [string]: any } = {}) => {
         toolbarBlocks: []
       };
 
+      componentDidMount() {
+        window.addEventListener('scroll', () => this.componentDidUpdate());
+      }
+
+      componentWillUnmount() {
+        window.removeEventListener('scroll', () => this.componentDidUpdate());
+      }
+
       componentDidUpdate() {
         const rect = getVisibleSelectionRect();
-        if (!rect || !this.containerNode) {
+        if (!rect || !this.toolbarContainerNode || !this.containerNode) {
           return;
         }
 
-        const top = rect.top + window.scrollY - this.containerNode.offsetHeight;
+        const top = rect.top - this.toolbarContainerNode.offsetHeight;
         const left =
-          rect.left +
-          window.scrollX -
-          this.containerNode.offsetWidth / 2 +
+          rect.left -
+          this.toolbarContainerNode.offsetWidth / 2 +
           rect.width / 2;
-        this.containerNode.style.top = `${top}px`;
-        this.containerNode.style.left = `${left}px`;
+
+        this.toolbarContainerNode.style.position = "fixed";
+        this.toolbarContainerNode.style.top = `${top}px`;
+        this.toolbarContainerNode.style.left = `${left}px`;
       }
 
       renderButton = (Type: any) => {
         const { value, onChange } = this.props;
 
         if (Type === "divider") {
-          return <div className="divider" />;
+          return <div className="divider" key={i++} />;
         }
 
         return (
@@ -114,18 +125,16 @@ export default (options: { [string]: any } = {}) => {
               <Container>
                 <div
                   className="slateToolbar"
-                  ref={node => (this.containerNode = node)}
+                  ref={node => (this.toolbarContainerNode = node)}
                 >
-                  <div className="slateToolbarMarkSection">
+                  <div className="slateToolbarItems">
                     {toolbarMarksList.length && (
-                      <div className="slateToolbarSection">
+                      <div className="item">
                         {toolbarMarksList.map(this.renderButton)}
                       </div>
                     )}
-                  </div>
-                  <div className="slateToolbarBlockSection">
                     {toolbarBlocksList.length && (
-                      <div className="slateToolbarSection">
+                      <div className="item">
                         {toolbarBlocksList.map(this.renderButton)}
                       </div>
                     )}
@@ -138,11 +147,28 @@ export default (options: { [string]: any } = {}) => {
       };
       render() {
         return (
-          <div>
+          <div ref={node => (this.containerNode = node)}>
             {this.renderMenu()}
             <Editor {...this.props} />
           </div>
         );
       }
     };
+
+    return class SlateToolbarDecorator extends React.Component<Props> {
+      render() {
+        return (
+          <WindowDimensions>
+            { ({ windowWidth, windowHeight }) => (
+              <Toolbar
+                {...this.props}
+                windowWidth={windowWidth}
+                windowHeight={windowHeight}
+                />
+            )}
+          </WindowDimensions>
+        );
+      }
+    }
+  }
 };
