@@ -1,5 +1,5 @@
 # slate-toolbar [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
-> Quick and easy way to implement medium like toolbar in you [slate editor](https://docs.slatejs.org)
+> Quick and easy way to implement medium like toolbar in your [slate editor](https://docs.slatejs.org)
 
 ![demo](./docs/demo.gif)
 
@@ -13,7 +13,7 @@ $ npm install --save slate-toolbar
 
 TODO
 
-see `./docs/index.js` for usage and demo
+see [./docs/index.js](./docs/index.js) for usage and demo
 
 ## Start example server
 
