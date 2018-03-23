@@ -64,7 +64,7 @@ see [./docs/index.js](./docs/index.js) for full implementation and demo
 
 `slate-toolbar` is fully customizable, so it allows you to pass options to setup items you want to implement in your toolbar.
 
-There's a example
+There's an example
 
 ```js
 const options = {
