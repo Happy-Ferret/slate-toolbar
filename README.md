@@ -77,7 +77,7 @@ const options = {
     Code,
     StrikeThrough,
     Clean,
-    "divider",
+    "divider", // ---> insert a divider to seperate icons
     AlignCenter,
     AlignLeft,
     AlignRight
