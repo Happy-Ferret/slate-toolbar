@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Editor} from 'slate-react';
 import {Value, Change} from 'slate';
-import renderNodesFn from '@canner/slate-icon-rendernodes';
+import renderNodesFn from '@canner/slate-icon-renderer';
 import {AlignCenter, AlignLeft, AlignRight} from '@canner/slate-icon-align';
 // import Blockquote from '@canner/slate-icon-blockquote';
 import Bold from '@canner/slate-icon-bold';
@@ -54,7 +54,7 @@ const initialValue = Value.fromJSON({
 });
 
 const options = {
-  toolbarMarks: [
+  icons: [
     Undo,
     Bold,
     Italic,
@@ -62,18 +62,10 @@ const options = {
     Code,
     StrikeThrough,
     Clean,
-    "divider"
-  ],
-  toolbarBlocks: [
-    // Link,
-    // Header1,
-    // Header2,
-    // Blockquote,
+    "divider",
     AlignCenter,
     AlignLeft,
-    AlignRight,
-    // OlList,
-    // UlList
+    AlignRight
   ]
 };
 

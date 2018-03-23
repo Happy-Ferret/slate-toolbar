@@ -2,30 +2,22 @@
 import * as React from "react";
 import type { Value, Change } from "slate";
 import { Portal } from "react-portal";
-import WindowDimensions from 'react-window-detect-dimensions';
+import WindowDimensions from "react-window-detect-dimensions";
+import Bold from "@canner/slate-icon-bold";
+import Italic from "@canner/slate-icon-italic";
+import Undo from "@canner/slate-icon-undo";
 import { getVisibleSelectionRect } from "./utils";
 import Container from "./container";
 
 type Props = {
-  toolbarMarks: Array<React.Element<*> | string>,
-  toolbarBlocks: Array<React.Element<*> | string>,
+  icons: Array<React.Element<*> | string>,
   value: Value,
   onChange: (change: Change) => void
 };
 
 export default (options: { [string]: any } = {}) => {
-  let { defaultNode, toolbarBlocks, toolbarMarks, toolbarElement } = options;
+  let { icons = [Bold, Italic, Undo], toolbarElement } = options;
   let i = 0;
-
-  if (!defaultNode) {
-    defaultNode = "paragraph";
-  }
-  if (!toolbarBlocks) {
-    toolbarBlocks = [];
-  }
-  if (!toolbarMarks) {
-    toolbarMarks = [];
-  }
 
   if (!toolbarElement) {
     toolbarElement = "slate-editor-toolbar";
@@ -50,17 +42,12 @@ export default (options: { [string]: any } = {}) => {
       containerNode: ?HTMLDivElement;
       toolbarElement: HTMLElement;
 
-      static defaultProps = {
-        toolbarMarks: [],
-        toolbarBlocks: []
-      };
-
       componentDidMount() {
-        window.addEventListener('scroll', () => this.componentDidUpdate());
+        window.addEventListener("scroll", () => this.componentDidUpdate());
       }
 
       componentWillUnmount() {
-        window.removeEventListener('scroll', () => this.componentDidUpdate());
+        window.removeEventListener("scroll", () => this.componentDidUpdate());
       }
 
       componentDidUpdate() {
@@ -111,12 +98,6 @@ export default (options: { [string]: any } = {}) => {
 
       renderMenu = () => {
         const { value } = this.props;
-        const toolbarMarksList = [...toolbarMarks, ...this.props.toolbarMarks];
-
-        const toolbarBlocksList = [
-          ...toolbarBlocks,
-          ...this.props.toolbarBlocks
-        ];
 
         return (
           value.isExpanded &&
@@ -128,15 +109,8 @@ export default (options: { [string]: any } = {}) => {
                   ref={node => (this.toolbarContainerNode = node)}
                 >
                   <div className="slateToolbarItems">
-                    {toolbarMarksList.length && (
-                      <div className="item">
-                        {toolbarMarksList.map(this.renderButton)}
-                      </div>
-                    )}
-                    {toolbarBlocksList.length && (
-                      <div className="item">
-                        {toolbarBlocksList.map(this.renderButton)}
-                      </div>
+                    {icons.length && (
+                      <div className="item">{icons.map(this.renderButton)}</div>
                     )}
                   </div>
                 </div>
@@ -153,22 +127,22 @@ export default (options: { [string]: any } = {}) => {
           </div>
         );
       }
-    };
+    }
 
     return class SlateToolbarDecorator extends React.Component<Props> {
       render() {
         return (
           <WindowDimensions>
-            { ({ windowWidth, windowHeight }) => (
+            {({ windowWidth, windowHeight }) => (
               <Toolbar
                 {...this.props}
                 windowWidth={windowWidth}
                 windowHeight={windowHeight}
-                />
+              />
             )}
           </WindowDimensions>
         );
       }
-    }
-  }
+    };
+  };
 };
