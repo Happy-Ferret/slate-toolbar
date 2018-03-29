@@ -3,10 +3,10 @@ import * as React from "react";
 import type { Value, Change } from "slate";
 import { Portal } from "react-portal";
 import WindowDimensions from "react-window-detect-dimensions";
-import Bold, {BoldPlugin} from "@canner/slate-icon-bold";
-import Italic, {ItalicPlugin} from "@canner/slate-icon-italic";
+import Bold, { BoldPlugin } from "@canner/slate-icon-bold";
+import Italic, { ItalicPlugin } from "@canner/slate-icon-italic";
 import Undo from "@canner/slate-icon-undo";
-import {ParagraphPlugin} from '@canner/slate-icon-shared';
+import { ParagraphPlugin } from "@canner/slate-icon-shared";
 import { getVisibleSelectionRect } from "./utils";
 import Container from "./container";
 
@@ -17,7 +17,7 @@ type Props = {
   onChange: (change: Change) => void
 };
 
-const defaultPlugins = [ParagraphPlugin, BoldPlugin, ItalicPlugin]
+const defaultPlugins = [ParagraphPlugin, BoldPlugin, ItalicPlugin];
 
 export default (options: { [string]: any } = {}) => {
   let { icons = [Bold, Italic, Undo], toolbarElement } = options;
@@ -127,9 +127,7 @@ export default (options: { [string]: any } = {}) => {
         return (
           <div ref={node => (this.containerNode = node)}>
             {this.renderMenu()}
-            <Editor
-              {...this.props}
-              />
+            <Editor {...this.props} />
           </div>
         );
       }
