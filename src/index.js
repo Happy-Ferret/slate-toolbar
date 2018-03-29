@@ -3,17 +3,21 @@ import * as React from "react";
 import type { Value, Change } from "slate";
 import { Portal } from "react-portal";
 import WindowDimensions from "react-window-detect-dimensions";
-import Bold from "@canner/slate-icon-bold";
-import Italic from "@canner/slate-icon-italic";
+import Bold, {BoldPlugin} from "@canner/slate-icon-bold";
+import Italic, {ItalicPlugin} from "@canner/slate-icon-italic";
 import Undo from "@canner/slate-icon-undo";
+import {ParagraphPlugin} from '@canner/slate-icon-shared';
 import { getVisibleSelectionRect } from "./utils";
 import Container from "./container";
 
 type Props = {
   icons: Array<React.Element<*> | string>,
+  plugins?: Array<any>,
   value: Value,
   onChange: (change: Change) => void
 };
+
+const defaultPlugins = [ParagraphPlugin, BoldPlugin, ItalicPlugin]
 
 export default (options: { [string]: any } = {}) => {
   let { icons = [Bold, Italic, Undo], toolbarElement } = options;
@@ -123,7 +127,9 @@ export default (options: { [string]: any } = {}) => {
         return (
           <div ref={node => (this.containerNode = node)}>
             {this.renderMenu()}
-            <Editor {...this.props} />
+            <Editor
+              {...this.props}
+              />
           </div>
         );
       }
@@ -136,6 +142,7 @@ export default (options: { [string]: any } = {}) => {
             {({ windowWidth, windowHeight }) => (
               <Toolbar
                 {...this.props}
+                plugins={this.props.plugins || defaultPlugins}
                 windowWidth={windowWidth}
                 windowHeight={windowHeight}
               />

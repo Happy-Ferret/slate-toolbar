@@ -28,11 +28,7 @@ class EditorContainer extends React.Component<Props> {
     return (
       <div className="editor">
         <Editor
-          value={this.props.value}
-          onChange={this.props.onChange}
-          renderMark={renderMark}
-          renderNode={renderNode}
-          plugins={plugins}
+          {...this.props}
         />
       </div>
     );
@@ -51,6 +47,7 @@ class App extends React.Component<{}, {value: Value}> {
         <EditorContainer
           value={this.state.value}
           onChange={({value}) => this.setState({value})}
+          plugins={plugins}
         />
       </div>
     );
@@ -63,6 +60,10 @@ see [./docs/index.js](./docs/index.js) for full implementation and demo
 ## Options
 
 `slate-toolbar` is fully customizable, so it allows you to pass options to setup items you want to implement in your toolbar.
+
+**NOTE: Remember to add certain plugin to your editor's plugins**
+
+[Select your icons here](https://github.com/Canner/slate-editor-icons#slate-editor-icons)
 
 There's an example
 
