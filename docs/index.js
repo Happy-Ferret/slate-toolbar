@@ -90,11 +90,9 @@ class EditorContainer extends React.Component<Props> {
   // On change, update the app's React state with the new editor state.
   render() {
     return (
-      <div className="editor">
-        <Editor
-          {...this.props}
-        />
-      </div>
+      <Editor
+        {...this.props}
+      />
     );
   }
 }
@@ -125,33 +123,35 @@ class App extends React.Component<{}, {value: Value, visible: boolean}> {
       visible: false,
     });
   }
+  onChange = ({value}) => {
+    this.setState({value});
+  }
 
   render() {
     return (
-      <div>
-        <div className="container markdown-body">
+      <div className="editor container markdown-body">
+        {
+          !this.state.visible &&
           <EditorContainer
             value={this.state.value}
-            onChange={({value}) => this.setState({value})}
+            onChange={this.onChange}
             plugins={plugins}
           />
-        </div>
+        }
 
         <div>
-          <Button type="primary" onClick={this.showModal}>Open</Button>
+          <Button type="primary" onClick={this.showModal}>Open in Modal</Button>
           <Modal
             title="Test toolbar in modal"
             visible={this.state.visible}
             onOk={this.handleOk}
             onCancel={this.handleCancel}
           >
-            <div className="markdown-body">
               <EditorContainer
                 value={this.state.value}
                 onChange={({value}) => this.setState({value})}
                 plugins={plugins}
               />
-            </div>
           </Modal>
         </div>
       </div>
