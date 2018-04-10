@@ -41,9 +41,7 @@ export default styled.div`
       border-width: 5px;
       margin-left: -5px;
     }
-  `}
-  
-  .slateToolbarItem {
+  `} .slateToolbarItem {
     cursor: pointer;
     display: inline-block;
     padding: 3px 5px;

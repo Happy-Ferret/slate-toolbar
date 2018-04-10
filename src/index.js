@@ -24,10 +24,7 @@ const defaultPlugins = [
 ];
 
 export default (options: { [string]: any } = {}) => {
-  let {
-    icons = [Bold, Italic, Underline],
-    position = "top"
-  } = options;
+  let { icons = [Bold, Italic, Underline], position = "top" } = options;
   let i = 0;
 
   return (Editor: any) => {
@@ -53,21 +50,30 @@ export default (options: { [string]: any } = {}) => {
           return;
         }
 
-        const containerBound = this.containerNode.getBoundingClientRect()
+        const containerBound = this.containerNode.getBoundingClientRect();
         const {
           left: containerBoundLeft,
           top: containerBoundTop
         } = containerBound;
 
-
-        const left = rect.left + rect.width / 2 - containerBoundLeft - this.toolbarContainerNode.offsetWidth / 2;
+        const left =
+          rect.left +
+          rect.width / 2 -
+          containerBoundLeft -
+          this.toolbarContainerNode.offsetWidth / 2;
         this.toolbarContainerNode.style.left = `${left}px`;
 
         if (position === "bottom") {
-          const top = rect.top - containerBoundTop + this.toolbarContainerNode.offsetHeight;
+          const top =
+            rect.top -
+            containerBoundTop +
+            this.toolbarContainerNode.offsetHeight;
           this.toolbarContainerNode.style.top = `${top}px`;
         } else if (position === "top") {
-          const top = rect.top - containerBoundTop - this.toolbarContainerNode.offsetHeight;
+          const top =
+            rect.top -
+            containerBoundTop -
+            this.toolbarContainerNode.offsetHeight;
           this.toolbarContainerNode.style.top = `${top}px`;
         }
       }
@@ -109,7 +115,8 @@ export default (options: { [string]: any } = {}) => {
           value.isFocused && (
             <Container
               position={position}
-              innerRef={node => (this.toolbarContainerNode = node)}>
+              innerRef={node => (this.toolbarContainerNode = node)}
+            >
               <div className="slateToolbarItems">
                 {icons.length && (
                   <div className="item">{icons.map(this.renderButton)}</div>
@@ -121,7 +128,10 @@ export default (options: { [string]: any } = {}) => {
       };
       render() {
         return (
-          <div style={{position: 'relative'}} ref={node => (this.containerNode = node)}>
+          <div
+            style={{ position: "relative" }}
+            ref={node => (this.containerNode = node)}
+          >
             {this.renderMenu()}
             <Editor {...this.props} />
           </div>
