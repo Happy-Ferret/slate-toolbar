@@ -84,7 +84,10 @@ const options = {
     AlignRight
   ],
   // Which div do you want to create a React protal, default to "slate-editor-toolbar"
-  toolbarElement: "my-toolbar-id"
+  toolbarElement: "my-toolbar-id",
+
+  // position, where toolbar should show up.
+  position: 'bottom' | 'top'
 };
 ```
 

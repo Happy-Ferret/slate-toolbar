@@ -5,7 +5,7 @@ import { Portal } from "react-portal";
 import WindowDimensions from "react-window-detect-dimensions";
 import Bold, { BoldPlugin } from "@canner/slate-icon-bold";
 import Italic, { ItalicPlugin } from "@canner/slate-icon-italic";
-import Undo from "@canner/slate-icon-undo";
+import Underline, { UnderlinePlugin } from "@canner/slate-icon-underline";
 import { ParagraphPlugin } from "@canner/slate-icon-shared";
 import { getVisibleSelectionRect } from "./utils";
 import Container from "./container";
@@ -17,10 +17,19 @@ type Props = {
   onChange: (change: Change) => void
 };
 
-const defaultPlugins = [ParagraphPlugin, BoldPlugin, ItalicPlugin];
+const defaultPlugins = [
+  ParagraphPlugin(),
+  BoldPlugin(),
+  ItalicPlugin(),
+  UnderlinePlugin()
+];
 
 export default (options: { [string]: any } = {}) => {
-  let { icons = [Bold, Italic, Undo], toolbarElement } = options;
+  let {
+    icons = [Bold, Italic, Underline],
+    toolbarElement,
+    position = "top"
+  } = options;
   let i = 0;
 
   if (!toolbarElement) {
@@ -60,15 +69,21 @@ export default (options: { [string]: any } = {}) => {
           return;
         }
 
-        const top = rect.top - this.toolbarContainerNode.offsetHeight;
         const left =
           rect.left -
           this.toolbarContainerNode.offsetWidth / 2 +
           rect.width / 2;
 
         this.toolbarContainerNode.style.position = "fixed";
-        this.toolbarContainerNode.style.top = `${top}px`;
         this.toolbarContainerNode.style.left = `${left}px`;
+
+        if (position === "bottom") {
+          const top = rect.top + this.toolbarContainerNode.offsetHeight;
+          this.toolbarContainerNode.style.top = `${top}px`;
+        } else if (position === "top") {
+          const top = rect.top - this.toolbarContainerNode.offsetHeight;
+          this.toolbarContainerNode.style.top = `${top}px`;
+        }
       }
 
       renderButton = (Type: any) => {
@@ -107,7 +122,7 @@ export default (options: { [string]: any } = {}) => {
           value.isExpanded &&
           value.isFocused && (
             <Portal node={this.toolbarElement}>
-              <Container>
+              <Container position={position}>
                 <div
                   className="slateToolbar"
                   ref={node => (this.toolbarContainerNode = node)}

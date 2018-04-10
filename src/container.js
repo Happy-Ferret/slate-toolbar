@@ -11,20 +11,39 @@ export default styled.div`
     border-radius: 5px;
     background-image: linear-gradient(180deg, #464646, #151515);
   }
-  .slateToolbar:after {
-    top: 100%;
-    left: 50%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-    border-top-color: #151515;
-    border-width: 5px;
-    margin-left: -5px;
-  }
-  .slateToolbar .slateToolbarItem {
+
+  ${props =>
+    props.position === "top"
+      ? `
+    .slateToolbar:after {
+      top: 100%;
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-top-color: #151515;
+      border-width: 5px;
+      margin-left: -5px;
+    }
+  `
+      : `
+    .slateToolbar:after {
+      bottom: 100%;
+      left: 50%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-bottom-color: #151515;
+      border-width: 5px;
+      margin-left: -5px;
+    }
+  `} .slateToolbar .slateToolbarItem {
     cursor: pointer;
     display: inline-block;
     padding: 3px 5px;

@@ -85,21 +85,20 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@canner/image-upload@^0.10.0":
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/@canner/image-upload/-/image-upload-0.10.0.tgz#2277038e91073723d9e3e2ccb1c38726c1e393eb"
+"@canner/slate-constant@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@canner/slate-constant/-/slate-constant-1.0.9.tgz#f1ac0c2fb56256371a9c9d89933863ad97fe9d17"
   dependencies:
-    react-intl "^2.4.0"
-    react-loading-image "^0.3.0"
-    styled-components "^3.2.0"
+    object-values "^2.0.0"
 
-"@canner/slate-editor-renderer@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@canner/slate-editor-renderer/-/slate-editor-renderer-1.0.4.tgz#4420fba95ddeae6f97813319daeb4c369d135c0f"
+"@canner/slate-editor-renderer@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@canner/slate-editor-renderer/-/slate-editor-renderer-1.1.0.tgz#7db00b5bae51d1b942e11652af3800d64032456a"
   dependencies:
-    "@canner/slate-helper-block-adddata" "^0.1.2"
-    "@canner/slate-icon-video" "^1.0.4"
+    "@canner/slate-helper-block-adddata" "^0.1.4"
     emoji-mart "^2.5.0"
+    js-video-url-parser "^0.2.7"
+    lodash.mapvalues "^4.6.0"
     react-icons "^2.2.7"
     react-resizable "^1.7.5"
 
@@ -107,26 +106,26 @@
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/@canner/slate-helper-block-adddata/-/slate-helper-block-adddata-0.1.3.tgz#d31facc2b1874563f9c78b17cfae0e93206e30ba"
 
+"@canner/slate-helper-block-adddata@^0.1.4":
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/@canner/slate-helper-block-adddata/-/slate-helper-block-adddata-0.1.4.tgz#65e6ea4a9cbc0a123a89a09dbb656345ba1fb7de"
+
 "@canner/slate-helper-block-cleardatabykey@^0.1.2":
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/@canner/slate-helper-block-cleardatabykey/-/slate-helper-block-cleardatabykey-0.1.3.tgz#2ce4676e87a8ef29787f4763bb40b264ae57e480"
 
-"@canner/slate-helper-block-heading@0.1.2":
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/@canner/slate-helper-block-heading/-/slate-helper-block-heading-0.1.2.tgz#fd52e4374430f702d9a52895d4274556bcc306ed"
+"@canner/slate-helper-block-list@^0.1.12", "@canner/slate-helper-block-list@^0.1.9":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@canner/slate-helper-block-list/-/slate-helper-block-list-0.1.12.tgz#5e2607cb0fbafafa239434e6c3d0208b5b270bf3"
   dependencies:
-    "@canner/slate-util-have" "^0.1.2"
-
-"@canner/slate-helper-block-list@^0.1.2", "@canner/slate-helper-block-list@^0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@canner/slate-helper-block-list/-/slate-helper-block-list-0.1.3.tgz#86df5c872d8a26e986c8f911253855dd2b9cb763"
-  dependencies:
+    "@canner/slate-constant" "^1.0.9"
     slate-edit-list "^0.11.2"
 
-"@canner/slate-helper-block-quote@^0.1.2", "@canner/slate-helper-block-quote@^0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@canner/slate-helper-block-quote/-/slate-helper-block-quote-0.1.3.tgz#b1185dfaabc70a23c91773e96ee7200877046b12"
+"@canner/slate-helper-block-quote@^0.1.12", "@canner/slate-helper-block-quote@^0.1.6":
+  version "0.1.12"
+  resolved "https://registry.yarnpkg.com/@canner/slate-helper-block-quote/-/slate-helper-block-quote-0.1.12.tgz#9b5de6cecdec595dfafb1304d5250023ab226434"
   dependencies:
+    "@canner/slate-constant" "^1.0.9"
     slate-edit-blockquote "^0.5.0"
 
 "@canner/slate-helper-inline-links@^0.1.3":
@@ -146,146 +145,144 @@
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/@canner/slate-helper-mark-removeall/-/slate-helper-mark-removeall-0.1.3.tgz#429ffad70188eea77bba1b37d3d2eab32d916fad"
 
-"@canner/slate-icon-align@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@canner/slate-icon-align/-/slate-icon-align-1.0.4.tgz#3bed7a89aa0dc2d198f2d647d43207e876cc949c"
+"@canner/slate-icon-align@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@canner/slate-icon-align/-/slate-icon-align-1.1.1.tgz#9b06c4870119fb884f7f2b6ac611101abbc67386"
   dependencies:
     "@canner/slate-helper-block-adddata" "^0.1.2"
     "@canner/slate-helper-block-cleardatabykey" "^0.1.2"
-    "@canner/slate-icon-shared" "^1.0.4"
+    "@canner/slate-icon-shared" "^1.1.1"
     "@canner/slate-util-have" "^0.1.2"
 
-"@canner/slate-icon-blockquote@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@canner/slate-icon-blockquote/-/slate-icon-blockquote-1.0.4.tgz#613bc8d667e8c995fc66407545ecae860b9f4fb9"
+"@canner/slate-icon-blockquote@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@canner/slate-icon-blockquote/-/slate-icon-blockquote-1.1.1.tgz#bb4edf5d803909981d3af5366ba2c0226facf56a"
   dependencies:
-    "@canner/slate-helper-block-quote" "^0.1.2"
-    "@canner/slate-icon-shared" "^1.0.4"
+    "@canner/slate-editor-renderer" "^1.1.0"
+    "@canner/slate-helper-block-quote" "^0.1.6"
+    "@canner/slate-icon-shared" "^1.1.1"
+    lodash.omit "^4.5.0"
     slate-edit-blockquote "0.5.0"
 
-"@canner/slate-icon-bold@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@canner/slate-icon-bold/-/slate-icon-bold-1.0.4.tgz#3fe920b61720e727180ece35c72242d1ed5a978f"
+"@canner/slate-icon-bold@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@canner/slate-icon-bold/-/slate-icon-bold-1.1.1.tgz#d770d71fe745c6b858e897f97f18a24fd7819e47"
   dependencies:
-    "@canner/slate-editor-renderer" "^1.0.4"
-    "@canner/slate-icon-shared" "^1.0.4"
+    "@canner/slate-editor-renderer" "^1.1.0"
+    "@canner/slate-icon-shared" "^1.1.1"
+    lodash.omit "^4.5.0"
 
-"@canner/slate-icon-clean@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@canner/slate-icon-clean/-/slate-icon-clean-1.0.4.tgz#aeba4a608a2af834ab232716ea28abeb11d551b0"
+"@canner/slate-icon-clean@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@canner/slate-icon-clean/-/slate-icon-clean-1.1.1.tgz#5a4e011a6e8c49d36b898a96809ac55767a6f5f3"
   dependencies:
     "@canner/slate-helper-mark-removeall" "^0.1.2"
-    "@canner/slate-icon-shared" "^1.0.4"
+    "@canner/slate-icon-shared" "^1.1.1"
 
-"@canner/slate-icon-code@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@canner/slate-icon-code/-/slate-icon-code-1.0.4.tgz#3dabadbde42969598b9173612c5486f03491b6bd"
+"@canner/slate-icon-code@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@canner/slate-icon-code/-/slate-icon-code-1.1.1.tgz#5a0a49edb094a050578e5dc82f51194e3589e54b"
   dependencies:
-    "@canner/slate-editor-renderer" "^1.0.4"
-    "@canner/slate-icon-shared" "^1.0.4"
+    "@canner/slate-editor-renderer" "^1.1.0"
+    "@canner/slate-icon-shared" "^1.1.1"
 
-"@canner/slate-icon-emoji@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@canner/slate-icon-emoji/-/slate-icon-emoji-1.0.4.tgz#08577166dbc2410c80ea6ca195528efdf42a5fe5"
+"@canner/slate-icon-emoji@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@canner/slate-icon-emoji/-/slate-icon-emoji-1.1.1.tgz#7e54fc847cb1de68bbf76ec4d13ee99aa849f517"
   dependencies:
-    "@canner/slate-editor-renderer" "^1.0.4"
-    "@canner/slate-icon-shared" "^1.0.4"
+    "@canner/slate-editor-renderer" "^1.1.0"
+    "@canner/slate-icon-shared" "^1.1.1"
     emoji-mart-picker "^0.2.3"
 
-"@canner/slate-icon-fontbgcolor@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@canner/slate-icon-fontbgcolor/-/slate-icon-fontbgcolor-1.0.4.tgz#b651a47baf67f36a3b5e2bbfcedacdba02b94292"
+"@canner/slate-icon-fontbgcolor@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@canner/slate-icon-fontbgcolor/-/slate-icon-fontbgcolor-1.1.1.tgz#89fb8215d5467bf5f3478a321a82e35e77f3a7fe"
   dependencies:
-    "@canner/slate-editor-renderer" "^1.0.4"
+    "@canner/slate-editor-renderer" "^1.1.0"
     "@canner/slate-helper-mark-addoverwrite" "^0.1.2"
-    "@canner/slate-icon-shared" "^1.0.4"
+    "@canner/slate-icon-shared" "^1.1.1"
     "@canner/slate-util-get" "^0.1.2"
     "@canner/slate-util-have" "^0.1.2"
     hex-rgb "^2.0.0"
+    lodash.omit "^4.5.0"
     rc-color-picker "^1.2.6"
 
-"@canner/slate-icon-fontcolor@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@canner/slate-icon-fontcolor/-/slate-icon-fontcolor-1.0.4.tgz#944ad5647ffe1461d448e02fe09d44bddf3b153e"
+"@canner/slate-icon-fontcolor@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@canner/slate-icon-fontcolor/-/slate-icon-fontcolor-1.1.1.tgz#e42e49e276810309d4605184866f1e5d666d8a87"
   dependencies:
-    "@canner/slate-editor-renderer" "^1.0.4"
+    "@canner/slate-editor-renderer" "^1.1.0"
     "@canner/slate-helper-mark-addoverwrite" "^0.1.2"
-    "@canner/slate-icon-shared" "^1.0.4"
+    "@canner/slate-icon-shared" "^1.1.1"
     "@canner/slate-util-get" "^0.1.2"
     "@canner/slate-util-have" "^0.1.2"
     hex-rgb "^2.0.0"
+    lodash.omit "^4.5.0"
     rc-color-picker "^1.2.6"
 
-"@canner/slate-icon-header@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@canner/slate-icon-header/-/slate-icon-header-1.0.4.tgz#1d7cba0afd929b6b33b73d5796d9112c46c88071"
+"@canner/slate-icon-header@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@canner/slate-icon-header/-/slate-icon-header-1.1.1.tgz#e37571f32d5e5241b7e508d86e20f30a598f8398"
   dependencies:
-    "@canner/slate-editor-renderer" "^1.0.4"
-    "@canner/slate-helper-block-heading" "0.1.2"
-    "@canner/slate-icon-shared" "^1.0.4"
+    "@canner/slate-editor-renderer" "^1.1.0"
+    "@canner/slate-icon-shared" "^1.1.1"
     "@canner/slate-util-have" "^0.1.2"
 
-"@canner/slate-icon-italic@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@canner/slate-icon-italic/-/slate-icon-italic-1.0.4.tgz#fae16b81f489dc340821d334c084cf173d4dd999"
+"@canner/slate-icon-italic@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@canner/slate-icon-italic/-/slate-icon-italic-1.1.1.tgz#e85713cdf50ed5db27507769c946e5c035b7e0a4"
   dependencies:
-    "@canner/slate-editor-renderer" "^1.0.4"
-    "@canner/slate-icon-shared" "^1.0.4"
+    "@canner/slate-editor-renderer" "^1.1.0"
+    "@canner/slate-icon-shared" "^1.1.1"
 
-"@canner/slate-icon-link@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@canner/slate-icon-link/-/slate-icon-link-1.0.4.tgz#aadb4ac717e625b5cb7381f4e551042256eba817"
+"@canner/slate-icon-link@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@canner/slate-icon-link/-/slate-icon-link-1.1.1.tgz#d141b8ee20f54a6b6fa831b90b6795f5aa41e57e"
   dependencies:
-    "@canner/slate-editor-renderer" "^1.0.4"
+    "@canner/slate-editor-renderer" "^1.1.0"
     "@canner/slate-helper-inline-links" "^0.1.3"
-    "@canner/slate-icon-shared" "^1.0.4"
+    "@canner/slate-icon-shared" "^1.1.1"
     "@canner/slate-util-have" "^0.1.2"
 
-"@canner/slate-icon-list@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@canner/slate-icon-list/-/slate-icon-list-1.0.4.tgz#6364bba5f7a59aec3361012a37a951ae36b4f444"
+"@canner/slate-icon-list@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@canner/slate-icon-list/-/slate-icon-list-1.1.1.tgz#dbd1936bac3e851db86aebfd10f756b152112376"
   dependencies:
-    "@canner/slate-editor-renderer" "^1.0.4"
-    "@canner/slate-helper-block-list" "^0.1.2"
-    "@canner/slate-icon-shared" "^1.0.4"
+    "@canner/slate-editor-renderer" "^1.1.0"
+    "@canner/slate-helper-block-list" "^0.1.9"
+    "@canner/slate-icon-shared" "^1.1.1"
     slate-edit-list "^0.11.2"
 
-"@canner/slate-icon-shared@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@canner/slate-icon-shared/-/slate-icon-shared-1.0.4.tgz#b3862f4b608289162ece23ec18bf00255471f99c"
+"@canner/slate-icon-shared@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@canner/slate-icon-shared/-/slate-icon-shared-1.1.1.tgz#39e9170a4868dd7e4f5b8274be8fa0963ae42312"
   dependencies:
-    "@canner/slate-editor-renderer" "^1.0.4"
+    "@canner/slate-editor-renderer" "^1.1.0"
     "@canner/slate-util-have" "^0.1.2"
-    quill-icons "^0.5.3"
+    classnames "^2.2.5"
+    is-hotkey "^0.1.2"
+    lodash.omit "^4.5.0"
+    quill-icons "^0.6.0"
 
-"@canner/slate-icon-strikethrough@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@canner/slate-icon-strikethrough/-/slate-icon-strikethrough-1.0.4.tgz#ef1ac16839e19b7871ba1a24d3a341b6786ad54e"
+"@canner/slate-icon-strikethrough@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@canner/slate-icon-strikethrough/-/slate-icon-strikethrough-1.1.1.tgz#c5c4bb0ba2efb108feeed1ce8276cf2ff21ce1d2"
   dependencies:
-    "@canner/slate-editor-renderer" "^1.0.4"
-    "@canner/slate-icon-shared" "^1.0.4"
+    "@canner/slate-editor-renderer" "^1.1.0"
+    "@canner/slate-icon-shared" "^1.1.1"
 
-"@canner/slate-icon-underline@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@canner/slate-icon-underline/-/slate-icon-underline-1.0.4.tgz#83aedf763440ad2dd21a64b74941ab42f5f6e451"
+"@canner/slate-icon-underline@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@canner/slate-icon-underline/-/slate-icon-underline-1.1.1.tgz#c8c4035f73ccf50b38dc8ef95492a3bf2ec62f39"
   dependencies:
-    "@canner/slate-editor-renderer" "^1.0.4"
-    "@canner/slate-icon-shared" "^1.0.4"
+    "@canner/slate-editor-renderer" "^1.1.0"
+    "@canner/slate-icon-shared" "^1.1.1"
 
-"@canner/slate-icon-undo@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@canner/slate-icon-undo/-/slate-icon-undo-1.0.4.tgz#ecc80e81acfbf07c6d42ec96ed6b56fe804696d1"
+"@canner/slate-icon-undo@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@canner/slate-icon-undo/-/slate-icon-undo-1.1.1.tgz#27826d9423853562e2d596b754e5c83e6f466ee4"
   dependencies:
-    "@canner/slate-icon-shared" "^1.0.4"
-
-"@canner/slate-icon-video@^1.0.4":
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/@canner/slate-icon-video/-/slate-icon-video-1.0.4.tgz#656ef828eb1ff89fa54d3c662810ead8fc46aec0"
-  dependencies:
-    "@canner/image-upload" "^0.10.0"
-    "@canner/slate-editor-renderer" "^1.0.4"
-    "@canner/slate-icon-shared" "^1.0.4"
-    js-video-url-parser "^0.2.7"
+    "@canner/slate-icon-shared" "^1.1.1"
 
 "@canner/slate-util-get@^0.1.2", "@canner/slate-util-get@^0.1.3":
   version "0.1.3"
@@ -3977,26 +3974,6 @@ interpret@^1.0.0, interpret@^1.0.4:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/interpret/-/interpret-1.1.0.tgz#7ed1b1410c6a0e0f78cf95d3b8440c63f78b8614"
 
-intl-format-cache@^2.0.5:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/intl-format-cache/-/intl-format-cache-2.1.0.tgz#04a369fecbfad6da6005bae1f14333332dcf9316"
-
-intl-messageformat-parser@1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/intl-messageformat-parser/-/intl-messageformat-parser-1.4.0.tgz#b43d45a97468cadbe44331d74bb1e8dea44fc075"
-
-intl-messageformat@^2.0.0, intl-messageformat@^2.1.0:
-  version "2.2.0"
-  resolved "https://registry.yarnpkg.com/intl-messageformat/-/intl-messageformat-2.2.0.tgz#345bcd46de630b7683330c2e52177ff5eab484fc"
-  dependencies:
-    intl-messageformat-parser "1.4.0"
-
-intl-relativeformat@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/intl-relativeformat/-/intl-relativeformat-2.1.0.tgz#010f1105802251f40ac47d0e3e1a201348a255df"
-  dependencies:
-    intl-messageformat "^2.0.0"
-
 into-stream@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/into-stream/-/into-stream-3.1.0.tgz#96fb0a936c12babd6ff1752a17d05616abd094c6"
@@ -4004,7 +3981,7 @@ into-stream@^3.1.0:
     from2 "^2.1.1"
     p-is-promise "^1.1.0"
 
-invariant@^2.1.1, invariant@^2.2.0, invariant@^2.2.2:
+invariant@^2.2.0, invariant@^2.2.2:
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   dependencies:
@@ -4163,6 +4140,10 @@ is-glob@^4.0.0:
 is-hotkey@^0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/is-hotkey/-/is-hotkey-0.1.1.tgz#b279a2fd108391be9aa93c6cb317f50357da549a"
+
+is-hotkey@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/is-hotkey/-/is-hotkey-0.1.2.tgz#aeda5e4f542284700ae18b46980fb0637c021198"
 
 is-in-browser@^1.1.3:
   version "1.1.3"
@@ -4775,6 +4756,10 @@ lodash.map@^4.4.0:
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/lodash.map/-/lodash.map-4.6.0.tgz#771ec7839e3473d9c4cde28b19394c3562f4f6d3"
 
+lodash.mapvalues@^4.6.0:
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/lodash.mapvalues/-/lodash.mapvalues-4.6.0.tgz#1bafa5005de9dd6f4f26668c30ca37230cc9689c"
+
 lodash.memoize@^4.1.2:
   version "4.1.2"
   resolved "https://registry.yarnpkg.com/lodash.memoize/-/lodash.memoize-4.1.2.tgz#bcc6c49a42a2840ed997f323eada5ecd182e0bfe"
@@ -5355,6 +5340,10 @@ object-is@^1.0.1:
 object-keys@^1.0.11, object-keys@^1.0.8:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-1.0.11.tgz#c54601778ad560f1142ce0e01bcca8b56d13426d"
+
+object-values@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/object-values/-/object-values-2.0.0.tgz#13f8b9733790431f2de56973bf2db70a1bf03858"
 
 object-visit@^1.0.0:
   version "1.0.1"
@@ -6148,9 +6137,9 @@ querystringify@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-1.0.0.tgz#6286242112c5b712fa654e526652bf6a13ff05cb"
 
-quill-icons@^0.5.3:
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/quill-icons/-/quill-icons-0.5.3.tgz#c2a8874deb23776bad7ece47754bd4949b2700b0"
+quill-icons@^0.6.0:
+  version "0.6.0"
+  resolved "https://registry.yarnpkg.com/quill-icons/-/quill-icons-0.6.0.tgz#4e20344670dcce149725cff5216fd3bdfcfb0a76"
   dependencies:
     classnames "^2.2.5"
     lodash.omit "^4.5.0"
@@ -6567,15 +6556,6 @@ react-immutable-proptypes@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/react-immutable-proptypes/-/react-immutable-proptypes-2.1.0.tgz#023d6f39bb15c97c071e9e60d00d136eac5fa0b4"
 
-react-intl@^2.4.0:
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/react-intl/-/react-intl-2.4.0.tgz#66c14dc9df9a73b2fbbfbd6021726e80a613eb15"
-  dependencies:
-    intl-format-cache "^2.0.5"
-    intl-messageformat "^2.1.0"
-    intl-relativeformat "^2.0.0"
-    invariant "^2.1.1"
-
 react-lazy-load@^3.0.12:
   version "3.0.13"
   resolved "https://registry.yarnpkg.com/react-lazy-load/-/react-lazy-load-3.0.13.tgz#3b0a92d336d43d3f0d73cbe6f35b17050b08b824"
@@ -6584,10 +6564,6 @@ react-lazy-load@^3.0.12:
     lodash.debounce "^4.0.0"
     lodash.throttle "^4.0.0"
     prop-types "^15.5.8"
-
-react-loading-image@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/react-loading-image/-/react-loading-image-0.3.0.tgz#8a91e6771e6a3fbd828ab679088163e8c8762556"
 
 react-portal@^3.1.0:
   version "3.2.0"
@@ -7562,7 +7538,7 @@ style-loader@^0.20.3:
     loader-utils "^1.1.0"
     schema-utils "^0.4.5"
 
-styled-components@^3.2.0, styled-components@^3.2.3:
+styled-components@^3.2.3:
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/styled-components/-/styled-components-3.2.3.tgz#50f71207320eeb1ef539dec4637f21f5e3c936b4"
   dependencies:

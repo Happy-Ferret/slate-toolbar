@@ -47,6 +47,7 @@ const initialValue = Value.fromJSON({
 });
 
 const options = {
+  position: 'bottom',
   icons: [
     Undo,
     Bold,
@@ -73,13 +74,13 @@ type Props = {
 const plugins = [
   EditList(DEFAULTLIST),
   EditBlockquote(DEFAULTBLOCKQUOTE),
-  BoldPlugin,
-  CodePlugin,
-  ItalicPlugin,
-  StrikeThroughPlugin,
-  ListPlugin,
-  UnderlinePlugin,
-  ParagraphPlugin
+  BoldPlugin(),
+  CodePlugin(),
+  ItalicPlugin(),
+  StrikeThroughPlugin(),
+  ListPlugin(),
+  UnderlinePlugin(),
+  ParagraphPlugin()
 ]
 
 @toolbar(options)
