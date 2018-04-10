@@ -2,20 +2,18 @@
 import styled from "styled-components";
 
 export default styled.div`
-  .slateToolbar {
-    position: absolute;
-    z-index: 100000;
-    margin-top: -6px;
-    color: #bbb;
-    cursor: auto;
-    border-radius: 5px;
-    background-image: linear-gradient(180deg, #464646, #151515);
-  }
+  position: absolute;
+  z-index: 100000;
+  margin-top: -6px;
+  color: #bbb;
+  cursor: auto;
+  border-radius: 5px;
+  background-image: linear-gradient(180deg, #464646, #151515);
 
   ${props =>
     props.position === "top"
       ? `
-    .slateToolbar:after {
+    &:after {
       top: 100%;
       left: 50%;
       border: solid transparent;
@@ -30,7 +28,7 @@ export default styled.div`
     }
   `
       : `
-    .slateToolbar:after {
+    &:after {
       bottom: 100%;
       left: 50%;
       border: solid transparent;
@@ -43,7 +41,9 @@ export default styled.div`
       border-width: 5px;
       margin-left: -5px;
     }
-  `} .slateToolbar .slateToolbarItem {
+  `}
+  
+  .slateToolbarItem {
     cursor: pointer;
     display: inline-block;
     padding: 3px 5px;

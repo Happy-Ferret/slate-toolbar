@@ -1,7 +1,6 @@
 // @flow
 import * as React from "react";
 import type { Value, Change } from "slate";
-import { Portal } from "react-portal";
 import WindowDimensions from "react-window-detect-dimensions";
 import Bold, { BoldPlugin } from "@canner/slate-icon-bold";
 import Italic, { ItalicPlugin } from "@canner/slate-icon-italic";
@@ -27,33 +26,18 @@ const defaultPlugins = [
 export default (options: { [string]: any } = {}) => {
   let {
     icons = [Bold, Italic, Underline],
-    toolbarElement,
     position = "top"
   } = options;
   let i = 0;
-
-  if (!toolbarElement) {
-    toolbarElement = "slate-editor-toolbar";
-  }
 
   return (Editor: any) => {
     class Toolbar extends React.Component<Props> {
       constructor(props: Props) {
         super(props);
-
-        if (document && document.getElementById(toolbarElement)) {
-          this.toolbarElement =
-            document && (document: any).getElementById(toolbarElement);
-        } else {
-          throw new Error(
-            `You have to have a element id: "${toolbarElement}" in your html`
-          );
-        }
       }
 
-      toolbarContainerNode: ?HTMLDivElement;
+      toolbarContainerNode: any;
       containerNode: ?HTMLDivElement;
-      toolbarElement: HTMLElement;
 
       componentDidMount() {
         window.addEventListener("scroll", () => this.componentDidUpdate());
@@ -69,19 +53,21 @@ export default (options: { [string]: any } = {}) => {
           return;
         }
 
-        const left =
-          rect.left -
-          this.toolbarContainerNode.offsetWidth / 2 +
-          rect.width / 2;
+        const containerBound = this.containerNode.getBoundingClientRect()
+        const {
+          left: containerBoundLeft,
+          top: containerBoundTop
+        } = containerBound;
 
-        this.toolbarContainerNode.style.position = "fixed";
+
+        const left = rect.left + rect.width / 2 - containerBoundLeft - this.toolbarContainerNode.offsetWidth / 2;
         this.toolbarContainerNode.style.left = `${left}px`;
 
         if (position === "bottom") {
-          const top = rect.top + this.toolbarContainerNode.offsetHeight;
+          const top = rect.top - containerBoundTop + this.toolbarContainerNode.offsetHeight;
           this.toolbarContainerNode.style.top = `${top}px`;
         } else if (position === "top") {
-          const top = rect.top - this.toolbarContainerNode.offsetHeight;
+          const top = rect.top - containerBoundTop - this.toolbarContainerNode.offsetHeight;
           this.toolbarContainerNode.style.top = `${top}px`;
         }
       }
@@ -121,26 +107,21 @@ export default (options: { [string]: any } = {}) => {
         return (
           value.isExpanded &&
           value.isFocused && (
-            <Portal node={this.toolbarElement}>
-              <Container position={position}>
-                <div
-                  className="slateToolbar"
-                  ref={node => (this.toolbarContainerNode = node)}
-                >
-                  <div className="slateToolbarItems">
-                    {icons.length && (
-                      <div className="item">{icons.map(this.renderButton)}</div>
-                    )}
-                  </div>
-                </div>
-              </Container>
-            </Portal>
+            <Container
+              position={position}
+              innerRef={node => (this.toolbarContainerNode = node)}>
+              <div className="slateToolbarItems">
+                {icons.length && (
+                  <div className="item">{icons.map(this.renderButton)}</div>
+                )}
+              </div>
+            </Container>
           )
         );
       };
       render() {
         return (
-          <div ref={node => (this.containerNode = node)}>
+          <div style={{position: 'relative'}} ref={node => (this.containerNode = node)}>
             {this.renderMenu()}
             <Editor {...this.props} />
           </div>

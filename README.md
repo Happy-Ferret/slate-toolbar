@@ -15,7 +15,6 @@ $ npm install --save slate-toolbar
 
 Just add a decorator `@toolbar()` on you editor component. The parent component of this component must pass two props `value: Value` and `onChange: (change: Change) => void`.
 
-First add a new `<div id="slate-editor-toolbar"></div>` in your html, id `slate-editor-toolbar` is needed, we will need this to create a React portal in this DOM element. You could customize the id by passing `opt.toolbarElement`. 
 
 ```js
 import toolbar from 'slate-toolbar';
@@ -83,8 +82,6 @@ const options = {
     AlignLeft,
     AlignRight
   ],
-  // Which div do you want to create a React protal, default to "slate-editor-toolbar"
-  toolbarElement: "my-toolbar-id",
 
   // position, where toolbar should show up.
   position: 'bottom' | 'top'

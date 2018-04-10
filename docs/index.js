@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Modal, Button} from 'antd';
 import {Editor} from 'slate-react';
 import {Value, Change} from 'slate';
 import {AlignCenter, AlignLeft, AlignRight} from '@canner/slate-icon-align';
@@ -98,20 +99,61 @@ class EditorContainer extends React.Component<Props> {
   }
 }
 
-class App extends React.Component<{}, {value: Value}> {
+class App extends React.Component<{}, {value: Value, visible: boolean}> {
   // Set the initial state when the app is first constructed.
-  state = {
-    value: initialValue
+  constructor(props: {}) {
+    super(props);
+  
+    this.state = {
+      value: initialValue,
+      visible: false
+    }
+  }
+
+  showModal = () => {
+    this.setState({
+      visible: true,
+    });
+  }
+  handleOk = () => {
+    this.setState({
+      visible: false,
+    });
+  }
+  handleCancel = () => {
+    this.setState({
+      visible: false,
+    });
   }
 
   render() {
     return (
-      <div className="container markdown-body">
-        <EditorContainer
-          value={this.state.value}
-          onChange={({value}) => this.setState({value})}
-          plugins={plugins}
-        />
+      <div>
+        <div className="container markdown-body">
+          <EditorContainer
+            value={this.state.value}
+            onChange={({value}) => this.setState({value})}
+            plugins={plugins}
+          />
+        </div>
+
+        <div>
+          <Button type="primary" onClick={this.showModal}>Open</Button>
+          <Modal
+            title="Test toolbar in modal"
+            visible={this.state.visible}
+            onOk={this.handleOk}
+            onCancel={this.handleCancel}
+          >
+            <div className="markdown-body">
+              <EditorContainer
+                value={this.state.value}
+                onChange={({value}) => this.setState({value})}
+                plugins={plugins}
+              />
+            </div>
+          </Modal>
+        </div>
       </div>
     );
   }
