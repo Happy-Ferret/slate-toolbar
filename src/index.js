@@ -6,8 +6,8 @@ import Bold, { BoldPlugin } from "@canner/slate-icon-bold";
 import Italic, { ItalicPlugin } from "@canner/slate-icon-italic";
 import Underline, { UnderlinePlugin } from "@canner/slate-icon-underline";
 import { ParagraphPlugin } from "@canner/slate-icon-shared";
-import { getVisibleSelectionRect } from "./utils";
-import Container from "./container";
+import { getVisibleSelectionRect } from "get-selection-range";
+import {ToolbarContainer, IconContainer, Divider, Item} from "./container";
 
 type Props = {
   icons: Array<React.Element<*> | string>,
@@ -82,28 +82,30 @@ export default (options: { [string]: any } = {}) => {
         const { value, onChange } = this.props;
 
         if (Type === "divider") {
-          return <div className="divider" key={i++} />;
+          return <Divider key={i++} />;
         }
 
         return (
-          <Type
-            change={value.change()}
-            onChange={onChange}
-            key={i++}
-            className="slateToolbarItem"
-            strokeClassName="qlStroke"
-            strokeMitterClassName="qlStrokeMitter"
-            fillClassName="qlFill"
-            evenClassName="qlEven"
-            colorLabelClassName="qlColorLabel"
-            thinClassName="qlThin"
-            activeStrokeMitterClassName="qlStrokeMitterActive"
-            activeClassName="slateToolbarItem activeItem"
-            activeStrokeClassName="qlStrokeActive"
-            activeFillClassName="qlFillActive"
-            activeThinClassName="qlThinActive"
-            activeEvenClassName="qlEvenActive"
-          />
+          <IconContainer>
+            <Type
+              change={value.change()}
+              onChange={onChange}
+              key={i++}
+              className="__slate-toolbar-slateToolbarItem"
+              strokeClassName="qlStroke"
+              strokeMitterClassName="qlStrokeMitter"
+              fillClassName="qlFill"
+              evenClassName="qlEven"
+              colorLabelClassName="qlColorLabel"
+              thinClassName="qlThin"
+              activeStrokeMitterClassName="qlStrokeMitterActive"
+              activeClassName="__slate-toolbar-slateToolbarItem"
+              activeStrokeClassName="qlStrokeActive"
+              activeFillClassName="qlFillActive"
+              activeThinClassName="qlThinActive"
+              activeEvenClassName="qlEvenActive"
+            />
+          </IconContainer>
         );
       };
 
@@ -113,16 +115,16 @@ export default (options: { [string]: any } = {}) => {
         return (
           value.isExpanded &&
           value.isFocused && (
-            <Container
+            <ToolbarContainer
               position={position}
               innerRef={node => (this.toolbarContainerNode = node)}
             >
-              <div className="slateToolbarItems">
+              <div style={{display: 'block'}}>
                 {icons.length && (
-                  <div className="item">{icons.map(this.renderButton)}</div>
+                  <Item>{icons.map(this.renderButton)}</Item>
                 )}
               </div>
-            </Container>
+            </ToolbarContainer>
           )
         );
       };

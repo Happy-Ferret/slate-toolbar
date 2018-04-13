@@ -1,7 +1,7 @@
 // @flow
 import styled from "styled-components";
 
-export default styled.div`
+export const ToolbarContainer = styled.div`
   position: absolute;
   z-index: 100000;
   margin-top: -6px;
@@ -41,30 +41,31 @@ export default styled.div`
       border-width: 5px;
       margin-left: -5px;
     }
-  `} .slateToolbarItem {
-    cursor: pointer;
-    display: inline-block;
+  `}
+`;
+
+export const Item = styled.div`
+  cursor: pointer;
+  display: inline-block;
+`
+
+export const Divider = styled.div`
+  display: inline-block;
+  height: 30px;
+  width: 10px;
+`
+
+export const IconContainer = styled.div`
+  display: inline-block;
+
+  .__slate-toolbar-slateToolbarItem {
     padding: 3px 5px;
   }
 
-  .slateToolbarItem,
-  .slateToolbarItemActive {
+  .__slate-toolbar-slateToolbarItem,
+  .__slate-toolbar-slateToolbarItemActive {
     height: 30px;
     width: 30px;
-  }
-
-  .slateToolbarItems {
-    display: block;
-
-    .item,
-    .divider {
-      display: inline-block;
-    }
-  }
-
-  .divider {
-    height: 30px;
-    width: 10px;
   }
 
   .qlStroke {
@@ -131,4 +132,4 @@ export default styled.div`
     fill: transparent;
     stroke-width: 1;
   }
-`;
+`
