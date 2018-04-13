@@ -7,7 +7,7 @@ import Italic, { ItalicPlugin } from "@canner/slate-icon-italic";
 import Underline, { UnderlinePlugin } from "@canner/slate-icon-underline";
 import { ParagraphPlugin } from "@canner/slate-icon-shared";
 import { getVisibleSelectionRect } from "get-selection-range";
-import {ToolbarContainer, IconContainer, Divider, Item} from "./container";
+import { ToolbarContainer, IconContainer, Divider, Item } from "./container";
 
 type Props = {
   icons: Array<React.Element<*> | string>,
@@ -119,10 +119,8 @@ export default (options: { [string]: any } = {}) => {
               position={position}
               innerRef={node => (this.toolbarContainerNode = node)}
             >
-              <div style={{display: 'block'}}>
-                {icons.length && (
-                  <Item>{icons.map(this.renderButton)}</Item>
-                )}
+              <div style={{ display: "block" }}>
+                {icons.length && <Item>{icons.map(this.renderButton)}</Item>}
               </div>
             </ToolbarContainer>
           )

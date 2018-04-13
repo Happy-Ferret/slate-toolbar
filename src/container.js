@@ -41,19 +41,19 @@ export const ToolbarContainer = styled.div`
       border-width: 5px;
       margin-left: -5px;
     }
-  `}
+  `};
 `;
 
 export const Item = styled.div`
   cursor: pointer;
   display: inline-block;
-`
+`;
 
 export const Divider = styled.div`
   display: inline-block;
   height: 30px;
   width: 10px;
-`
+`;
 
 export const IconContainer = styled.div`
   display: inline-block;
@@ -132,4 +132,4 @@ export const IconContainer = styled.div`
     fill: transparent;
     stroke-width: 1;
   }
-`
+`;
