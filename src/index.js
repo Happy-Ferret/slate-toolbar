@@ -24,7 +24,7 @@ const defaultPlugins = [
 ];
 
 export default (options: { [string]: any } = {}) => {
-  let { icons = [Bold, Italic, Underline], position = "top" } = options;
+  let { icons = [Bold, Italic, Underline], position = "top", disabledTypes = [] } = options;
   let i = 0;
 
   return (Editor: any) => {
@@ -35,7 +35,6 @@ export default (options: { [string]: any } = {}) => {
 
       toolbarContainerNode: any;
       containerNode: ?HTMLDivElement;
-
       componentDidMount() {
         window.addEventListener("scroll", () => this.componentDidUpdate());
       }
@@ -45,11 +44,23 @@ export default (options: { [string]: any } = {}) => {
       }
 
       componentDidUpdate() {
+        const { value } = this.props;
         const rect = getVisibleSelectionRect();
         if (!rect || !this.toolbarContainerNode || !this.containerNode) {
           return;
         }
+        
+        if (
+          value.blocks.find(block => disabledTypes.find(type => type === value.document.getParent(block.key).type)) ||
+          value.blocks.find(block => disabledTypes.find(type => type === block.type))
+        ) {
+          this.toolbarContainerNode.style.display = 'none';
+          return;
+        }
 
+        this.toolbarContainerNode.style.display = 'block';
+
+        // $FlowFixMe
         const containerBound = this.containerNode.getBoundingClientRect();
         const {
           left: containerBoundLeft,

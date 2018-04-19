@@ -5,11 +5,11 @@ import {Modal, Button} from 'antd';
 import {Editor} from 'slate-react';
 import {Value, Change} from 'slate';
 import {AlignCenter, AlignLeft, AlignRight} from '@canner/slate-icon-align';
-// import Blockquote from '@canner/slate-icon-blockquote';
+import Blockquote, {BlockquotePlugin} from '@canner/slate-icon-blockquote';
 import Bold, {BoldPlugin} from '@canner/slate-icon-bold';
 import Clean from '@canner/slate-icon-clean';
 import Code, {CodePlugin} from '@canner/slate-icon-code';
-// import {Header1, Header2} from '@canner/slate-icon-header';
+import {Header1, Header2, HeaderOnePlugin, HeaderTwoPlugin} from '@canner/slate-icon-header';
 import Italic, {ItalicPlugin} from '@canner/slate-icon-italic';
 import {OlList, UlList, ListPlugin} from '@canner/slate-icon-list';
 import StrikeThrough, {StrikeThroughPlugin} from '@canner/slate-icon-strikethrough';
@@ -49,6 +49,7 @@ const initialValue = Value.fromJSON({
 
 const options = {
   position: 'bottom',
+  disabledTypes: ['code_block', 'code_line', 'header_one', 'header_two'],
   icons: [
     Undo,
     Bold,
@@ -63,7 +64,11 @@ const options = {
     AlignRight,
     "divider",
     OlList,
-    UlList
+    UlList,
+    "divider",
+    Blockquote,
+    Header1,
+    Header2
   ]
 };
 
@@ -75,13 +80,16 @@ type Props = {
 const plugins = [
   EditList(DEFAULTLIST),
   EditBlockquote(DEFAULTBLOCKQUOTE),
+  BlockquotePlugin(),
   BoldPlugin(),
   CodePlugin(),
   ItalicPlugin(),
   StrikeThroughPlugin(),
   ListPlugin(),
   UnderlinePlugin(),
-  ParagraphPlugin()
+  ParagraphPlugin(),
+  HeaderOnePlugin(),
+  HeaderTwoPlugin()
 ]
 
 @toolbar(options)
