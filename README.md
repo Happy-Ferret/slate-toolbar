@@ -84,7 +84,10 @@ const options = {
   ],
 
   // position, where toolbar should show up.
-  position: 'bottom' | 'top'
+  position: 'bottom' | 'top',
+
+  // disabled in block types in the list
+  disabledTypes: ['code_block', 'code_line', 'header_one', 'header_two']
 };
 ```
 
